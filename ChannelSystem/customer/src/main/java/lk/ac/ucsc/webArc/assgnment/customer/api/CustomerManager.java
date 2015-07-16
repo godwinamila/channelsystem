@@ -1,0 +1,39 @@
+package lk.ac.ucsc.webArc.assgnment.customer.api;
+
+import lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer.Customer;
+import lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer.LoginProfile;
+import lk.ac.ucsc.webArc.assgnment.customer.api.exceptions.CustomerException;
+
+
+import java.util.List;
+
+/**
+ * This is the service interface to manage all the channelInfo related information.
+ * All the channelInfo related operations should be done through this interface.
+ * <p/>
+ * User: Hetti
+ * Date: 12/26/12
+ * Time: 12:27 PM
+ */
+public interface CustomerManager {
+
+
+    Customer getCustomerByCustomerNumber(String customerNumber) throws CustomerException;
+
+    Customer getCustomerByLoginNameOrAlias(String loginName) throws CustomerException;
+
+    long addCustomer(Customer customer) throws CustomerException;
+
+    void updateCustomer(Customer customer) throws CustomerException;
+
+    void markCustomerAsDeleted(String customerNumber) throws CustomerException;
+
+    List<Customer> getAllCustomers() throws CustomerException;
+
+    Customer getEmptyCustomer(String customerNumber);
+
+    LoginProfile getEmptyLoginProfile();
+
+    void validateCustomer(Customer customer) throws CustomerException;
+}
+
