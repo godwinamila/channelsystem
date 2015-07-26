@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean name="doctorManager" id="doctorManager"
+          class="lk.ac.ucsc.webArc.assgnment.doctor.impl.facade.DoctorManagerFacade">
+        <property name="doctorPersister" ref="doctorPersister"></property>
+    </bean>
+
+    <bean id="doctorPersister"
+          class="lk.ac.ucsc.webArc.assgnment.doctor.impl.persistantImpl.hibernate.DoctorPersisterHibernate"
+          scope="singleton">
+        <constructor-arg index="0" ref="realTime"/>
+    </bean>
+
+    <bean name="docLoginManager" id="docLoginManager"
+          class="lk.ac.ucsc.webArc.assgnment.doctor.impl.facade.DoctorLoginManagerFacade">
+        <property name="doctorManagerFacade" ref="doctorManager"></property>
+        <property name="allowedFailedAttempt" value="5"></property>
+    </bean>
+
+    <!--Common Config for DataSource-->
+
+    <bean id="realTime" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="lk.ac.ucsc.webArc.assgnment.doctor.impl.beans"/>
+        <property name="configLocations" value="impl/doctor_hibernate.cfg.xml"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
+        <property name="username" value="XE"/>
+        <property name="password" value="password"/>
+    </bean>
+
+
+
+</beans>
