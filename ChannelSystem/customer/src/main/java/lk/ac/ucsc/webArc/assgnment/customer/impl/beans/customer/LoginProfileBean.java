@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 9:49 AM
  * <p/>
  * this class has the implementations of method declarations in login profile interface with relevant variables

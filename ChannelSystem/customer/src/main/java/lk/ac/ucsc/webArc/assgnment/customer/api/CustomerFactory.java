@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 
 /**
- * Factory that is used to get the service interfaces of the channelInfo module to access main services provided by channelInfo module
+ * Factory that is used to get the service interfaces of the customer module to access main services provided by customer module
  */
 public class CustomerFactory {
     private static Logger logger = LoggerFactory.getLogger(CustomerFactory.class);
@@ -27,7 +27,7 @@ public class CustomerFactory {
     private CustomerFactory() throws CustomerException {
         synchronized (this) {
             if (context == null) {
-                context = new ClassPathXmlApplicationContext("/implGeneral/spring-config-customer.xml");
+                context = new ClassPathXmlApplicationContext("/impl/spring-config-customer.xml");
             }
         }
 
@@ -62,7 +62,7 @@ public class CustomerFactory {
     }
 
     /**
-     * Get the service API of the channelInfo module which is used to manage all channelInfo information
+     * Get the service API of the customer module which is used to manage all customer information
      *
      * @return CustomerManager
      */
@@ -75,7 +75,7 @@ public class CustomerFactory {
 
 
     /**
-     * Get the service API of the channelInfo module which is used to manage all channelInfo login related operations
+     * Get the service API of the customer module which is used to manage all customer login related operations
      *
      * @return CustomerLoginManager
      */

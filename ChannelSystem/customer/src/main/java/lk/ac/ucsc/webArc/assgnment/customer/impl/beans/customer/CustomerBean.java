@@ -10,10 +10,10 @@ import javax.persistence.Id;
 
 /**
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 9:27 AM
  * <p>
- * implementation fo channelInfo interface with relevant variables
+ * implementation fo customer interface with relevant variables
  */
 @Indexed
 public class CustomerBean implements Customer {
@@ -47,13 +47,13 @@ public class CustomerBean implements Customer {
 
 
     /**
-     * default constructor of channelInfo bean
+     * default constructor of customer bean
      */
     public CustomerBean() {
     }
 
     /**
-     * constructor with channelInfo number provided
+     * constructor with customer number provided
      *
      * @param customerNumber
      */
@@ -103,7 +103,7 @@ public class CustomerBean implements Customer {
     }
 
     /**
-     * set channelInfo id of the bean
+     * set customer id of the bean
      *
      * @param customerId of the bean
      */

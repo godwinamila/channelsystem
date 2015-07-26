@@ -354,7 +354,7 @@
                     <aggregate>true</aggregate>
                     <show>private</show>
                     <nohelp>true</nohelp>
-                    <excludePackageNames>*.implGeneral:*.implGeneral.*</excludePackageNames>
+                    <excludePackageNames>*.impl:*.impl.*</excludePackageNames>
                     <outputDirectory>${project.build.directory}</outputDirectory>
                     <reportOutputDirectory>${project.build.directory}</reportOutputDirectory>
                 </configuration>
