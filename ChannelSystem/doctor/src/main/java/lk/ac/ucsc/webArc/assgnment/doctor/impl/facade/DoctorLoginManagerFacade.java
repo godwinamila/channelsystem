@@ -3,9 +3,10 @@ package lk.ac.ucsc.webArc.assgnment.doctor.impl.facade;
 
 import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorLoginManager;
 import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorManager;
-import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.doctor.Doctor;
-import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.doctor.LoginProfile;
 
+
+import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.Doctor;
+import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.LoginProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

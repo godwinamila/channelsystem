@@ -19,10 +19,8 @@
         <property name="lastName" type="java.lang.String">
             <column name="LAST_NAME" length="255"/>
         </property>
-        <property name="gender" column="GENDER" length="2">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">com.directfn.oms.core.doctor.api.beans.Gender</param>
-            </type>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" length="10"/>
         </property>
         <property name="officeTele" type="java.lang.String">
             <column name="OFFICE_TELE" length="20"/>
@@ -50,7 +48,7 @@
 
 
     <class name="lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.LoginProfileBean"
-           table="cusmm_loginprofile">
+           table="docmm_loginprofile">
         <id name="doctorId" type="java.lang.Long">
             <column name="DOCTOR_ID" not-null="true" length="10"/>
             <generator class="assigned"/>
@@ -63,10 +61,8 @@
             <column name="PASSWORD" length="255"/>
         </property>
 
-        <property name="status" column="STATUS" length="2">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">lk.ac.ucsc.oms.doctor.api.beans.LoginProfileStatus</param>
-            </type>
+        <property name="status" type="java.lang.Integer">
+            <column name="STATUS" length="10"/>
         </property>
 
         <property name="failedAttemptCount" type="java.lang.Integer">
