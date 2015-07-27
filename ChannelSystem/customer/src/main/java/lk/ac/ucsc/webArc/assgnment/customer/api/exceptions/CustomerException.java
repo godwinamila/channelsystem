@@ -3,10 +3,10 @@ package lk.ac.ucsc.webArc.assgnment.customer.api.exceptions;
 
 
 /**
- * This is an Exception class used to wrap all the exceptions thrown in channelInfo related operations.
+ * This is an Exception class used to wrap all the exceptions thrown in customer related operations.
  *
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 12:29 PM
  */
 public class CustomerException extends Exception {

@@ -8,11 +8,11 @@ import lk.ac.ucsc.webArc.assgnment.customer.api.exceptions.CustomerException;
 import java.util.List;
 
 /**
- * This is the service interface to manage all the channelInfo related information.
- * All the channelInfo related operations should be done through this interface.
+ * This is the service interface to manage all the customer related information.
+ * All the customer related operations should be done through this interface.
  * <p/>
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 12:27 PM
  */
 public interface CustomerManager {

@@ -23,7 +23,7 @@ import java.util.List;
  * All the operations are done through CustomerCacheFacade.
  * <p/>
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 2:34 PM
  */
 public class CustomerManagerFacade implements CustomerManager {
@@ -150,7 +150,7 @@ public class CustomerManagerFacade implements CustomerManager {
 
 
     /**
-     * validate channelInfo number for null or empty
+     * validate customer number for null or empty
      *
      * @param customer
      * @throws CustomerException

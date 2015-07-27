@@ -3,10 +3,10 @@ package lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer;
 import lk.ac.ucsc.webArc.assgnment.customer.impl.beans.customer.LoginProfileBean;
 
 /**
- * This is the service api which used to set and get the channelInfo related information
+ * This is the service api which used to set and get the customer related information
  *
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 12:19 PM
  */
 public interface Customer {
