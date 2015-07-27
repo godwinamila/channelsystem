@@ -20,10 +20,8 @@
         <property name="lastName" type="java.lang.String">
             <column name="LAST_NAME" length="255"/>
         </property>
-        <property name="gender" column="GENDER" length="2">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">com.directfn.oms.core.customer.api.beans.Gender</param>
-            </type>
+        <property name="gender"  type="java.lang.String">
+            <column name="GENDER" length="10"/>
         </property>
         <property name="officeTele" type="java.lang.String">
             <column name="OFFICE_TELE" length="20"/>
@@ -61,10 +59,9 @@
             <column name="PASSWORD" length="255"/>
         </property>
 
-        <property name="status" column="STATUS" length="2">
-            <type name="org.hibernate.type.EnumType">
-                <param name="enumClass">lk.ac.ucsc.oms.customer.api.beans.LoginProfileStatus</param>
-            </type>
+
+        <property name="status" type="java.lang.Integer">
+            <column name="STATUS" length="10"/>
         </property>
 
         <property name="failedAttemptCount" type="java.lang.Integer">

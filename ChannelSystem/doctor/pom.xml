@@ -42,8 +42,8 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>

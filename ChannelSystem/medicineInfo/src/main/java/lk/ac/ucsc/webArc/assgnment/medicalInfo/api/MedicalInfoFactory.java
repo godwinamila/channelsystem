@@ -25,7 +25,7 @@ public class MedicalInfoFactory {
     private MedicalInfoFactory() throws MedicalInfoException {
         synchronized (this) {
             if (context == null) {
-                context = new ClassPathXmlApplicationContext("/impl/spring-config-medicalInfo.xml");
+                context = new ClassPathXmlApplicationContext("/impl/spring-config-medicineInfo.xml");
             }
         }
 
