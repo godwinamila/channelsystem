@@ -1,0 +1,17 @@
+CREATE TABLESPACE tbs_perm_01
+  DATAFILE 'tbs_perm_01.dat' 
+    SIZE 20M
+  ONLINE;
+
+CREATE USER CHANNEL_SYSTEM
+  IDENTIFIED BY password
+  DEFAULT TABLESPACE tbs_perm_01
+  QUOTA 20M on tbs_perm_01;
+  
+GRANT create session TO CHANNEL_SYSTEM;
+GRANT create table TO CHANNEL_SYSTEM;
+GRANT create view TO CHANNEL_SYSTEM;
+GRANT create any trigger TO CHANNEL_SYSTEM;
+GRANT create any procedure TO CHANNEL_SYSTEM;
+GRANT create sequence TO CHANNEL_SYSTEM;
+GRANT create synonym TO CHANNEL_SYSTEM;
