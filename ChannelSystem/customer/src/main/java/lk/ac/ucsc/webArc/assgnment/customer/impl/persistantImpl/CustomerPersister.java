@@ -9,12 +9,12 @@ import java.util.List;
 
 /**
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 3:10 PM
  *
- * here are method definitions for channelInfo persister,
+ * here are method definitions for customer persister,
  * method to delete customers from database,
- * get last channelInfo id from database for the usage of sequence generator etc
+ * get last customer id from database for the usage of sequence generator etc
  */
 public interface CustomerPersister  {
 

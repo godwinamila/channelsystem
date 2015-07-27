@@ -29,7 +29,7 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
 
 
     /**
-     * set channelInfo manager facade for this login manager
+     * set customer manager facade for this login manager
      *
      * @param customerManagerFacade of this class
      */
@@ -165,7 +165,7 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
         //if the type is to change Login Password only call the changeLoginPassword method
         //else for change the trading password do call the changeTradingPassword method
 
-        //below is to validate the channelInfo change both login and trading passwords
+        //below is to validate the customer change both login and trading passwords
         if (customerNumber == null || "".equals(customerNumber)) {    //check whether customerNumber is null or empty
             return "-1";
         }

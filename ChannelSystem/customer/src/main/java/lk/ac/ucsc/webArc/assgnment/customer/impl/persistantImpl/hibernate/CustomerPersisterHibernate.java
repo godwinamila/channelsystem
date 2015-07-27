@@ -19,9 +19,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This is hibernate implementation of the persistent api of the channelInfo module
+ * This is hibernate implementation of the persistent api of the customer module
  * User: Hetti
- * Date: 12/26/12
+
  * Time: 3:07 PM
  */
 public class CustomerPersisterHibernate implements CustomerPersister {
@@ -41,7 +41,7 @@ public class CustomerPersisterHibernate implements CustomerPersister {
 
 
     /**
-     * set the search session factory for dealer related channelInfo searches
+     * set the search session factory for dealer related customer searches
      *
      * @param searchSessionFactory
      */
