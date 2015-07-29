@@ -34,7 +34,6 @@
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
-    <orderEntry type="library" name="Maven: oracle:ojdbc:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-search:4.2.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-orm:4.2.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-analyzers:4.2.0.Final" level="project" />

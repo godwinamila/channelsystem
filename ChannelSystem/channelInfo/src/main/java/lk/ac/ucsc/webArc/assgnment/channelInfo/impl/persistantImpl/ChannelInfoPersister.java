@@ -28,7 +28,7 @@ public interface ChannelInfoPersister  {
 
     List<ChannelInfo> loadAll();
 
-    void deleteFromDB(ChannelInfoBean customer) throws ChannelInfoException;
+    void deleteFromDB(ChannelInfoBean channelInfo) throws ChannelInfoException;
 
 
 }

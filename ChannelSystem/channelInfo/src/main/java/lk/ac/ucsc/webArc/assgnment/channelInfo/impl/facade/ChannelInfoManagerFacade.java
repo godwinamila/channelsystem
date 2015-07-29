@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
- * CustomerManagerFacade class implements all the services defined in the CustomerManager interface.
- * This class has a reference to the CustomerCacheFacade class that provides all the cache and physical storage related operations.
- * All the operations are done through CustomerCacheFacade.
+ * ChannelInfoManagerFacade class implements all the services defined in the ChannelInfoManager interface.
+ * This class has a reference to the ChannelInfoCacheFacade class that provides all the cache and physical storage related operations.
+ * All the operations are done through ChannelInfoCacheFacade.
  * <p/>
  * User: Hetti
 
@@ -88,9 +88,9 @@ public class ChannelInfoManagerFacade implements ChannelInfoManager {
      */
     @Override
     public ChannelInfo getChannelInfo(String channelInfoId) throws ChannelInfoException {
-        logger.info("Getting the customer with customer number - {}", channelInfoId);
+        logger.info("Getting the channelInfo with channelInfo number - {}", channelInfoId);
         if (channelInfoId == null || "".equalsIgnoreCase(channelInfoId)) {
-            throw new ChannelInfoException("Customer Number Can't be Null or Empty");
+            throw new ChannelInfoException("ChannelInfo Number Can't be Null or Empty");
         }
         return channelInfoPersister.load(channelInfoId);
     }

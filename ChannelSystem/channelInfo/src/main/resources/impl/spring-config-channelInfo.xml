@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean name="channelInfoManager" id="customerManager"
+    <bean name="channelInfoManager" id="channelInfoManager"
           class="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.facade.ChannelInfoManagerFacade">
         <property name="channelInfoPersister" ref="channelInfoPersister"></property>
     </bean>
@@ -26,7 +26,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
-        <property name="username" value="XE"/>
+        <property name="username" value="CHANNEL_SYSTEM"/>
         <property name="password" value="password"/>
     </bean>
 
