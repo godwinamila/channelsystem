@@ -3,7 +3,36 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--CustomerManager Config-->
+    <!--UserManager Config-->
+
+    <bean name="userManager" id="userManager"
+          class="lk.ac.ucsc.webArc.assgnment.user.impl.facade.UserManagerFacade">
+        <property name="userPersister" ref="userPersister"></property>
+    </bean>
+    <bean name="userLoginManager"
+          class="lk.ac.ucsc.webArc.assgnment.user.impl.facade.UserLoginManagerFacade">
+        <property name="userManagerFacade" ref="userManager"></property>
+    </bean>
+    <bean id="userPersister"
+          class="lk.ac.ucsc.webArc.assgnment.user.impl.persistantImpl.hibernate.UserPersisterHibernate"
+          scope="singleton">
+        <constructor-arg index="0" ref="realTime"/>
+
+    </bean>
+    <!--Common Config for DataSource-->
+
+    <bean id="realTime" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="lk.ac.ucsc.webArc.assgnment.user.impl.beans"/>
+        <property name="configLocations" value="impl/user_hibernate.cfg.xml"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
+        <property name="username" value="CHANNEL_SYSTEM"/>
+        <property name="password" value="password"/>
+    </bean>
 
 
 </beans>

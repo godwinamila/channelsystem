@@ -56,17 +56,17 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
         Session session = sessionFactory.openSession();
         try {
             if (co == null) {
-                logger.error("Customer bean can't be null");
-                throw new ChannelInfoException("Customer bean can't be null");
+                logger.error("ChannelInfo bean can't be null");
+                throw new ChannelInfoException("ChannelInfo bean can't be null");
             }
-            logger.debug("updating the Customer bean: {}", co);
+            logger.debug("updating the ChannelInfo bean: {}", co);
             tx = session.beginTransaction();
             session.update(co);
             tx.commit();
             logger.debug("updating finished");
         } catch (Exception e) {
-            logger.error("Customer bean can't update", e);
-            throw new ChannelInfoException("Customer bean can't update", e);
+            logger.error("ChannelInfo bean can't update", e);
+            throw new ChannelInfoException("ChannelInfo bean can't update", e);
         } finally {
             session.close();
         }
@@ -81,18 +81,18 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
         Transaction tx;
         Session session = sessionFactory.openSession();
         try {
-            logger.debug("Inserting the Customer bean:{} ", co);
+            logger.debug("Inserting the ChannelInfo bean:{} ", co);
             if (co == null) {
-                logger.error("Customer bean can't be null");
-                throw new ChannelInfoException("Customer bean can't be null");
+                logger.error("ChannelInfo bean can't be null");
+                throw new ChannelInfoException("ChannelInfo bean can't be null");
             }
             tx = session.beginTransaction();
             session.save(co);
             tx.commit();
-            logger.debug("Inserting Customer bean finished");
+            logger.debug("Inserting ChannelInfo bean finished");
         } catch (Exception e) {
-            logger.error("problem in adding customer", e);
-            throw new ChannelInfoException("problem in adding customer", e);
+            logger.error("problem in adding channelInfo", e);
+            throw new ChannelInfoException("problem in adding channelInfo", e);
         } finally {
             session.close();
         }
@@ -109,15 +109,15 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
 
             logger.info("Loading the channelInfo with channelInfo code:{} ", channelInfoId);
             if (channelInfoId == null || "".equals(channelInfoId)) {
-                logger.warn("Customer info provided not enough to load from DB");
-                throw new ChannelInfoException("Customer bean can't be null");
+                logger.warn("ChannelInfo info provided not enough to load from DB");
+                throw new ChannelInfoException("ChannelInfo bean can't be null");
             }
             String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean C WHERE C.channelInfoId = :chanInId";
             Query query = session.createQuery(hql);
             query.setParameter("chanInId", channelInfoId);
             channelInfoBean = (ChannelInfoBean) query.uniqueResult();
 
-            logger.info("Loaded Customer:{}", channelInfoBean);
+            logger.info("Loaded ChannelInfo:{}", channelInfoBean);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new ChannelInfoException("Error in executing Hibernate Query for loading channelInfo", e);
@@ -132,7 +132,7 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
      */
     @Override
     public List<ChannelInfo> loadAll() {
-        logger.info("Loading all the Customer from DB");
+        logger.info("Loading all the ChannelInfo from DB");
         List<ChannelInfo> cashObjectLst = new ArrayList<>();
         Session session = sessionFactory.openSession();
         try {
@@ -161,21 +161,21 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
      */
     @Override
     public void deleteFromDB(ChannelInfoBean channelInfo) throws ChannelInfoException {
-        logger.info("Deleting Customer bean ");
+        logger.info("Deleting ChannelInfo bean ");
         Transaction tx;
         Session session = sessionFactory.openSession();
         try {
             if (channelInfo == null) {
-                throw new ChannelInfoException("The Customer to remove can't be null");
+                throw new ChannelInfoException("The ChannelInfo to remove can't be null");
             }
-            logger.debug("Deleting the Customer bean: {}", channelInfo);
+            logger.debug("Deleting the ChannelInfo bean: {}", channelInfo);
             tx = session.beginTransaction();
             session.delete(channelInfo);
             tx.commit();
             logger.info("Deleting finished");
         } catch (Exception e) {
-            logger.error("Customer bean can't delete", e);
-            throw new ChannelInfoException("Error in Removing Customer From DB", e);
+            logger.error("ChannelInfo bean can't delete", e);
+            throw new ChannelInfoException("Error in Removing ChannelInfo From DB", e);
         } finally {
             session.close();
         }
