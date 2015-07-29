@@ -114,7 +114,13 @@ public class ChannelInfoManagerFacade implements ChannelInfoManager {
         return new ChannelInfoBean();
     }
 
+    @Override
+    public List<ChannelInfo> getChannelInfoForCustomer(String customerNumber) throws ChannelInfoException {
+        return channelInfoPersister.getChannelInfoForCustomer(customerNumber);
+    }
 
-
-
+    @Override
+    public List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber) throws ChannelInfoException {
+        return channelInfoPersister.getChannelInfoForDoctor(doctorNumber);
+    }
 }
