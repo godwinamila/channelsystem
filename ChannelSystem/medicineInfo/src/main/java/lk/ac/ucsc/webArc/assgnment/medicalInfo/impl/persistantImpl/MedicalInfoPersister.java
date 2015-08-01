@@ -31,4 +31,9 @@ public interface MedicalInfoPersister  {
     void deleteFromDB(MedicalInfoBean customer) throws MedicalInfoException;
 
 
+    List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber);
+
+    MedicalInfo getMedicalInfoForAppointment(String channelId);
+
+    List<MedicalInfo> getMedicineInfoForDoctor(String doctorNumber);
 }

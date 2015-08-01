@@ -28,6 +28,11 @@ import java.util.List;
 
     MedicalInfo getEmptyMedicalInfo();
 
+    List<MedicalInfo> getMedicineInfoForCustomer(String customerNumer) throws MedicalInfoException;
+
+    MedicalInfo getMedicalInfoForAppointment(String channelId) throws MedicalInfoException;
+
+    List<MedicalInfo> getMedicineInfoForDoctor(String doctorNumber) throws MedicalInfoException;
 
 }
 

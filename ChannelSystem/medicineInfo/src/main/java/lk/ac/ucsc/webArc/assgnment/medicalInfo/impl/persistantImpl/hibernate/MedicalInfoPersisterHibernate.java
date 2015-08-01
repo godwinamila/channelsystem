@@ -182,10 +182,67 @@ public class MedicalInfoPersisterHibernate implements MedicalInfoPersister {
 
     }
 
+    @Override
+    public List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber) {
+        List<MedicalInfo> cashObjectLst = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.patientNumber=:cusNum";
+            Query query = session.createQuery(hql);
+            query.setParameter("cusNum",customerNumber);
+            List results = query.list();
 
+            for (Object cgb : results) {
+                MedicalInfoBean medicalInfoBean = (MedicalInfoBean) cgb;
+                cashObjectLst.add(medicalInfoBean);
+            }
+            logger.debug("Loaded channnelInfo list of size:{} and list:{}", cashObjectLst.size(), cashObjectLst);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return cashObjectLst;
+    }
 
+    @Override
+    public MedicalInfo getMedicalInfoForAppointment(String channelId) {
+        MedicalInfo medicalInfo=null;
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.channelId =: chanId";
+            Query query = session.createQuery(hql);
+            query.setParameter("chanId",channelId);
+            medicalInfo = (MedicalInfoBean)query.uniqueResult();
 
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return medicalInfo;
+    }
 
+    @Override
+    public List<MedicalInfo> getMedicineInfoForDoctor(String doctorNumber) {
+        List<MedicalInfo> cashObjectLst = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.doctorNumber=:docNum";
+            Query query = session.createQuery(hql);
+            query.setParameter("docNum",doctorNumber);
+            List results = query.list();
 
-
+            for (Object cgb : results) {
+                MedicalInfoBean medicalInfoBean = (MedicalInfoBean) cgb;
+                cashObjectLst.add(medicalInfoBean);
+            }
+            logger.debug("Loaded channnelInfo list of size:{} and list:{}", cashObjectLst.size(), cashObjectLst);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return cashObjectLst;
+    }
 }

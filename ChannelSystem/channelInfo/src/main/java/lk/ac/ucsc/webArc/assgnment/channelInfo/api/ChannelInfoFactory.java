@@ -62,7 +62,7 @@ public class ChannelInfoFactory {
     /**
      * Get the service API of the channelInfo module which is used to manage all channelInfo information
      *
-     * @return CustomerManager
+     * @return ChannelInfoManager
      */
     public ChannelInfoManager getChannelInfoManager() {
         return context.getBean("channelInfoManager", ChannelInfoManager.class);
