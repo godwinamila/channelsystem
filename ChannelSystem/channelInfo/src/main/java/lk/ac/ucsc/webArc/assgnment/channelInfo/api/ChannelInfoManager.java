@@ -26,6 +26,10 @@ import java.util.List;
 
     List<ChannelInfo> getAllChannelInfo() throws ChannelInfoException;
 
+    List<ChannelInfo> getChannelInfoForCustomer(String customerNumber) throws ChannelInfoException;
+
+    List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber) throws ChannelInfoException;
+
     ChannelInfo getEmptyChannelInfo();
 
 

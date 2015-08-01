@@ -114,7 +114,18 @@ public class MedicalInfoManagerFacade implements MedicalInfoManager {
         return new MedicalInfoBean();
     }
 
+    @Override
+    public List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber) throws MedicalInfoException {
+        return medicalInfoPersister.getMedicineInfoForCustomer(customerNumber);
+    }
 
+    @Override
+    public MedicalInfo getMedicalInfoForAppointment(String channelId) throws MedicalInfoException {
+        return medicalInfoPersister.getMedicalInfoForAppointment(channelId);
+    }
 
-
+    @Override
+    public List<MedicalInfo> getMedicineInfoForDoctor(String doctorNumber) throws MedicalInfoException {
+        return medicalInfoPersister.getMedicineInfoForDoctor(doctorNumber);
+    }
 }

@@ -182,10 +182,51 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
 
     }
 
+    @Override
+    public List<ChannelInfo> getChannelInfoForCustomer(String customerNumber) {
+        logger.info("Loading all the ChannelInfo from DB");
+        List<ChannelInfo> cashObjectLst = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean C where C.patientNumber=:cusNum";
+            Query query = session.createQuery(hql);
+            query.setParameter("cusNum",customerNumber);
+            List results = query.list();
 
+            for (Object cgb : results) {
+                ChannelInfoBean channelInfoBean = (ChannelInfoBean) cgb;
+                cashObjectLst.add(channelInfoBean);
+            }
+            logger.debug("Loaded channnelInfo list of size:{} and list:{}", cashObjectLst.size(), cashObjectLst);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return cashObjectLst;
+    }
 
+    @Override
+    public List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber) {
+        logger.info("Loading all the ChannelInfo from DB");
+        List<ChannelInfo> cashObjectLst = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean C where C.doctorNumber=:doctorNum";
+            Query query = session.createQuery(hql);
+            query.setParameter("doctorNum",doctorNumber);
+            List results = query.list();
 
-
-
-
+            for (Object cgb : results) {
+                ChannelInfoBean channelInfoBean = (ChannelInfoBean) cgb;
+                cashObjectLst.add(channelInfoBean);
+            }
+            logger.debug("Loaded channnelInfo list of size:{} and list:{}", cashObjectLst.size(), cashObjectLst);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return cashObjectLst;
+    }
 }
