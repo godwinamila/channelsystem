@@ -115,12 +115,26 @@ input[type=submit] {
     border: 1px solid black;
     background: black;
     font-weight: bold;
+	cursor:pointer;
+}
+input[type=reset] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    border: 1px solid black;
+    background: black;
+    font-weight: bold;
+	cursor:pointer;
 }
 input[type=submit].green {
     border: 1px solid darkgreen;
     background: green;
 }
-input[type=submit].red {
+input[type=submit]:hover {
+    border: 1px solid darkred;
+    background: darkred;
+}
+input[type=reset]:hover {
     border: 1px solid darkred;
     background: darkred;
 }
@@ -189,9 +203,18 @@ select {
     font-size: 1.2em;
 }
 .success-msg {
+	margin-top: 5px;
     padding: 10px;
     border-left: 2px solid green;
     background: lightgreen;
+    margin-bottom: 5px;
+}
+
+.error-msg {
+	margin-top: 5px;
+    padding: 10px;
+    border-left: 2px solid red;
+    background: red;
     margin-bottom: 5px;
 }
 
@@ -211,7 +234,11 @@ select {
 }
 
 /* User registration */
-
+span.invalid {
+    padding-left: 3px;
+    color: red;
+    font: 85%/1 sans-serif;
+}
 
 /* Seach doctor */
 

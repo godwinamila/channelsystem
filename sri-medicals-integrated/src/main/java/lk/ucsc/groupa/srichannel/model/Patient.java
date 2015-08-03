@@ -36,7 +36,7 @@ public class Patient implements Serializable {
 	private String title;
 
 	@NotNull
-	@Size(min = 1, max = 25)
+	//@Size(min = 1, max = 25)
 	@NotEmpty(message = "First name cannot be empty")
 	@Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
 	private String firstName;
@@ -45,14 +45,14 @@ public class Patient implements Serializable {
 	private String gender;
 	
 	@NotNull
-    @Size(min = 10, max = 12)
-    @Digits(fraction = 0, integer = 12, message = "Incorrect Format, valid e.g. 121212121212")
+    //@Size(min = 10, max = 12)
+    @Digits(fraction = 0, integer = 12, message = "Incorrect Format, valid e.g. 0112123456")
     @Column(name = "office_tel_number")
 	private String officeTele;
 	
 	@NotNull
-    @Size(min = 10, max = 12)
-    @Digits(fraction = 0, integer = 12, message = "Incorrect Format, valid e.g. 121212121212")
+    //@Size(min = 10, max = 12)
+    @Digits(fraction = 0, integer = 12, message = "Incorrect Format, valid e.g. 0777123456")
     @Column(name = "mobile_number")
 	private String mobile;
 	
@@ -64,18 +64,17 @@ public class Patient implements Serializable {
 	private String password;
 	
 	@NotNull
-	@Size(min = 1, max = 25)
+	///@Size(min = 1, max = 25)
 	@NotEmpty(message = "Last name cannot be empty")
 	@Pattern(regexp = "[A-Za-z ]*", message = "must contain only letters and spaces")
 	private String lastName;
 	
 	@NotNull
-	@Size(min = 10, max = 10)
-	@NotEmpty(message = "NIC cannot be empty")
-	@Pattern(regexp = "^\\d{9}[V,v]", message = "must be a valid NIC number")
+	//@Size(min = 10, max = 10)
+	//@NotEmpty(message = "NIC cannot be empty")
+	@Pattern(regexp = "^\\d{9}[V,v]", message = "Invalid NIC number")
 	private String nicNumber;
 	
-	@Null
 	private String address;
 	
 	
