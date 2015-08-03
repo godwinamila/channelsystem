@@ -32,7 +32,7 @@ public class PatientController {
         if (!result.hasErrors()) {
             try {
             	patientDao.register(newPatient);
-                return "redirect:/";
+                return "patient/success";
             } catch (UnexpectedRollbackException e) {
                 model.addAttribute("patients", patientDao.findAllOrderedByName());
                 model.addAttribute("error", e.getCause().getCause());
