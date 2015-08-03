@@ -135,7 +135,7 @@ public class DoctorPersisterHibernate implements DoctorPersister {
         List<Doctor> cashObjectLst = new ArrayList<>();
         Session session = sessionFactory.openSession();
         try {
-            String hql = "FROM lk.ac.ucsc.oms.doctor.implGeneral.beans.doctor.DoctorBean";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.DoctorBean";
             Query query = session.createQuery(hql);
             List results = query.list();
 
@@ -189,7 +189,7 @@ public class DoctorPersisterHibernate implements DoctorPersister {
         logger.info("Loading all the Doctor codes from DB");
         Session session = sessionFactory.openSession();
         try {
-            String hql = "select max(C.doctorId) FROM lk.ac.ucsc.oms.doctor.implGeneral.beans.doctor.DoctorBean C ";
+            String hql = "select max(C.doctorId) FROM lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.DoctorBean C ";
             Query query = session.createQuery(hql);
 
             Long results = (Long) query.uniqueResult();
@@ -216,7 +216,7 @@ public class DoctorPersisterHibernate implements DoctorPersister {
         Session session = sessionFactory.openSession();
         try {
             logger.info("Loading the doctor with doctor Id:{} ", doctorNumber);
-            String hql = "FROM lk.ac.ucsc.oms.doctor.implGeneral.beans.doctor.DoctorBean C WHERE C.doctorNumber = :doctorNumber";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.DoctorBean C WHERE C.doctorNumber = :doctorNumber";
             Query query = session.createQuery(hql);
             query.setParameter("doctorNumber", doctorNumber);
             doctorBean = (DoctorBean) query.uniqueResult();
