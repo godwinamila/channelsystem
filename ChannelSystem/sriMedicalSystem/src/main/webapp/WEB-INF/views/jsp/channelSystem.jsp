@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 
@@ -40,16 +41,21 @@
                 <table style="width: 100%;">
                     <tr>
                         <td>
-                            <form name="login-form">
+                            <form:form method="post" modelAttribute="loginForm" action="login">
                                 <h3>Sign In</h3>
                                 <table class="form-table">
                                     <tr>
+                                        <spring:bind path="errorMsg">
                                         <td>
+                                            <c:if test="${not empty error}">
+                                                Error: ${error}
+                                            </c:if>
                                             <label>UserName: </label>
                                         </td>
                                         <td>
-                                            <input type="text" name="userName" />
+                                            <form:input path="userName" type="text" />
                                         </td>
+                                        </spring:bind>
                                     </tr>
                                     <tr>
                                         <td>
@@ -76,7 +82,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </form>
+                            </form:form>
                         </td>
                         <td>
                             <a href="register">

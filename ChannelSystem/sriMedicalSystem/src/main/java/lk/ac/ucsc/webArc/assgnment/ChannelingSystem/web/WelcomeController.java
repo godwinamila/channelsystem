@@ -2,10 +2,17 @@ package lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web;
 
 import java.util.Map;
 
+import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.LoginForm;
+import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerFactory;
+import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerLoginManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,14 +32,31 @@ public class WelcomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Map<String, Object> model) {
+	public String index(Model model) {
 
 		logger.debug("index() is executed!");
-
-		model.put("title", helloWorldService.getTitle(""));
-		model.put("msg", helloWorldService.getDesc());
+		LoginForm loginForm =new LoginForm();
+		model.addAttribute("loginForm", loginForm);
 		
 		return "channelSystem";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@ModelAttribute("loginForm") LoginForm loginForm,
+						BindingResult result, Model model) {
+		try {
+			CustomerFactory customerFactory = CustomerFactory.getInstance();
+			CustomerLoginManager loginManager =customerFactory.getCustomerLoginManager();
+			String loginResult =loginManager.loginCustomer(loginForm.getUserName(),loginForm.getPassword());
+			if(loginResult.equalsIgnoreCase("SUCCESS")){
+				return "channelSystem";
+			}
+			loginForm.setErrorMsg("Invalid UserName or Password");
+			model.addAttribute("error", "Invalid UserName or Password");
+		}catch (Exception e){
+			logger.error(e.getMessage(),e);
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
