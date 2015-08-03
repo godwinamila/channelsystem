@@ -49,7 +49,7 @@
 
 
     <class name="lk.ac.ucsc.webArc.assgnment.user.impl.beans.UserLoginProfileBean"
-           table="cusmm_loginprofile">
+           table="usermm_loginprofile">
         <id name="userId" type="java.lang.Long">
             <column name="USER_ID" not-null="true" length="10"/>
             <generator class="assigned"/>
