@@ -6,89 +6,63 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Sri Medicals</title>
-  <spring:url value="/resources/core/css/global.css" var="coreCss" />
-  <link href="${coreCss}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Sri Medicals</title>
+    <spring:url value="/resources/core/css/global.css" var="coreCss"/>
+    <link href="${coreCss}" rel="stylesheet"/>
 </head>
 
 <body>
-<header>
-  <div class="wrapper">
-    <div>
-      <h1><a href="#">Sri Medicals</a></h1>
-
-      <div class="account-bar">
-        <a href="#"></a> | <a href="#">Logout</a>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="./">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Search Doctor</a></li>
-        <li><a href="#">Check Appointments</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<%@ include file="header.jsp" %>
 
 <div class="main-content">
-  <div class="wrapper">
+<div class="wrapper">
 
-    <!-- doctor search -->
-    <section class="search-doc-box content-box">
-      <h3>Search Doctor</h3>
+<!-- doctor search -->
+<section class="search-doc-box content-box">
+<h3>Search Doctor</h3>
 
-      <form name="search-doc-form" method="post">
-        <table class="form-table">
-          <tr>
-            <td>
-              Last Name:
-            </td>
-            <td>
-              <input type="text" name="lastname" />
-            </td>
-          </tr>
-          <tr>
-            <td>Speciality:</td>
-            <td>
-              <select name="specialty">
-                <option>Physician</option>
-                <option>Surgon</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <input type="submit" value="Search..." />
-            </td>
-          </tr>
-        </table>
-      </form>
+<form:form method="post" modelAttribute="searchDocForm" action="searchDoctor">
+    <table class="form-table">
+    <tr>
+    <td><form:label path="lastName">Last Name:</form:label></td>
+    <td><form:input path="lastName"/></td>
+    <td><form:errors class="invalid" path="lastName"/></td>
+    </tr>
+    <tr>
+
+    <td><form:label path="speciality">Speciality:</form:label></td>
+    <td><form:select path="speciality">
+    <form:option value="Physician"></form:option>
+    <form:option value="Surgon"></form:option>
+</form:select>
+    </td>
+
+    </tr>
+    <tr>
+    <td></td>
+    <td>
+    <input type="submit" value="Search..." />
+    </td>
+    </tr>
+    </table>
+    </form:form >
 
 
     </section>
 
 
-  </div>
-  <!-- end of wrapper -->
-</div>
-<!-- end of main content -->
+    </div>
+    <!-- end of wrapper -->
+    </div>
+    <!-- end of main content -->
 
+    <%@ include file="footer.jsp" %>
+    </body>
 
-<footer>
-  <div class="wrapper">
-    <p class="copyright">&copy; 2015 Sri Medicals. All rights reserved.</p>
-  </div>
-</footer>
-
-</body>
-
-</html>
+    </html>

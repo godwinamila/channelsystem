@@ -162,7 +162,12 @@ public class CustomerManagerFacade implements CustomerManager {
         }
     }
 
-
-
-
+    @Override
+    public long getLastCustomerId() {
+        try {
+            return customerPersister.getLastCustomerId();
+        }catch (Exception e){
+            return 1;
+        }
+    }
 }

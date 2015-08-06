@@ -232,7 +232,44 @@ public class DoctorPersisterHibernate implements DoctorPersister {
     }
 
 
+    @Override
+    public List<Doctor> getDoctorByLastName(String lastName) {
+        List<Doctor> doctorList=new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            logger.info("Loading the doctor with lastName:{} ", lastName);
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.DoctorBean C WHERE C.lastName = :lastName";
+            Query query = session.createQuery(hql);
+            query.setParameter("lastName", lastName);
+            doctorList = query.list();
 
+            logger.info("Loaded Doctor:{}", doctorList);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return doctorList;
+    }
 
+    @Override
+    public List<Doctor> getDoctorBySpeciality(String speciality) {
+        List<Doctor> doctorList=new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            logger.info("Loading the doctor with speciality:{} ", speciality);
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.doctor.impl.beans.DoctorBean C WHERE C.speciality = :speciality";
+            Query query = session.createQuery(hql);
+            query.setParameter("speciality", speciality);
+            doctorList = query.list();
 
+            logger.info("Loaded Doctor:{}", doctorList);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+
+        } finally {
+            session.close();
+        }
+        return doctorList;
+    }
 }

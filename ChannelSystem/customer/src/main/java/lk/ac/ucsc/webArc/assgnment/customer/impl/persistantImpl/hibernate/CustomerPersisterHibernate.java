@@ -188,7 +188,7 @@ public class CustomerPersisterHibernate implements CustomerPersister {
      * {@inheritDoc}
      */
     @Override
-    public String getLastCustomerId() throws CustomerException {
+    public long getLastCustomerId() throws CustomerException {
         logger.info("Loading all the Customer codes from DB");
         Session session = sessionFactory.openSession();
         try {
@@ -197,9 +197,9 @@ public class CustomerPersisterHibernate implements CustomerPersister {
 
             Long results = (Long) query.uniqueResult();
             if (results != null) {
-                return results.toString();
+                return results;
             } else {
-                return "0";
+                return 1;
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
