@@ -31,4 +31,8 @@ public interface DoctorPersister  {
     String getLastDoctorId() throws DoctorException;
 
     DoctorBean loadByDoctorNumber(String doctorNumber) throws DoctorException;
+
+    List<Doctor> getDoctorByLastName(String lastName);
+
+    List<Doctor> getDoctorBySpeciality(String speciality);
 }

@@ -79,6 +79,11 @@
             <artifactId>hibernate-search-infinispan</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.2.0.Final</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
@@ -94,6 +99,12 @@
         <dependency>
             <groupId>oracle</groupId>
             <artifactId>ojdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
