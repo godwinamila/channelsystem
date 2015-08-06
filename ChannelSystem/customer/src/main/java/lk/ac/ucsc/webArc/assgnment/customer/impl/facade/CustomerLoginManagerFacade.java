@@ -85,7 +85,7 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
                 return reply;
             }
             logger.debug("check the status of the login profile");
-            if (loginProfile.getStatus() != 1) {
+            if (loginProfile.getStatus() != 2) {
                 logger.info("customer account has " + loginProfile.getStatus());
                 reply ="Invalid Login - Inactive customer";
                 return reply;

@@ -28,12 +28,16 @@ public interface DoctorManager {
 
     void markDoctorAsDeleted(String doctorNumber) throws DoctorException;
 
-    List<Doctor> getAllDoctors() throws DoctorException;
+    List<Doctor> getAllDoctors() ;
 
     Doctor getEmptyDoctor(String doctorNumber);
 
     LoginProfile getEmptyLoginProfile();
 
     void validateDoctor(Doctor doctor) throws DoctorException;
+
+    List<Doctor> getDoctorByLastName(String lastName);
+
+    List<Doctor> getDoctorBySpeciality(String speciality);
 }
 

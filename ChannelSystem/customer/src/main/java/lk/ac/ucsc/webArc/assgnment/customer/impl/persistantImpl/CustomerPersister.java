@@ -28,7 +28,7 @@ public interface CustomerPersister  {
 
     void deleteFromDB(CustomerBean customer) throws CustomerException;
 
-    String getLastCustomerId() throws CustomerException;
+    long getLastCustomerId() throws CustomerException;
 
     CustomerBean loadByCustomerNumber(String customerNumber) throws CustomerException;
 }

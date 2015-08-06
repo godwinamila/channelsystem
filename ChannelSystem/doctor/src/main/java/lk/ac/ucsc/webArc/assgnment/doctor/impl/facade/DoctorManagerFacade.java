@@ -124,7 +124,7 @@ public class DoctorManagerFacade implements DoctorManager {
      * {@inheritDoc}
      */
     @Override
-    public List<Doctor> getAllDoctors() throws DoctorException {
+    public List<Doctor> getAllDoctors()  {
         logger.info("Getting All the Doctors");
         return doctorPersister.loadAll();
     }
@@ -162,7 +162,13 @@ public class DoctorManagerFacade implements DoctorManager {
         }
     }
 
+    @Override
+    public List<Doctor> getDoctorByLastName(String lastName) {
+        return doctorPersister.getDoctorByLastName(lastName);
+    }
 
-
-
+    @Override
+    public List<Doctor> getDoctorBySpeciality(String speciality) {
+        return doctorPersister.getDoctorBySpeciality(speciality);
+    }
 }

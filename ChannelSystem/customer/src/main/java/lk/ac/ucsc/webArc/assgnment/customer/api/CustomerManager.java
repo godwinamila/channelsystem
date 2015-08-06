@@ -35,5 +35,7 @@ public interface CustomerManager {
     LoginProfile getEmptyLoginProfile();
 
     void validateCustomer(Customer customer) throws CustomerException;
+
+    long getLastCustomerId();
 }
 
