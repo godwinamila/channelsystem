@@ -11,9 +11,9 @@ import java.util.Date;
  */
 public interface ChannelInfo {
 
-    String getChannelInfoId();
+    int getChannelInfoId();
 
-    void setChannelInfoId(String channelInfoId);
+    void setChannelInfoId(int channelInfoId);
 
     String getPatientNumber();
 

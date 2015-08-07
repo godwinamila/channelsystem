@@ -8,12 +8,20 @@
           class="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.facade.ChannelInfoManagerFacade">
         <property name="channelInfoPersister" ref="channelInfoPersister"></property>
     </bean>
+    <bean name="channelScheduleManager" id="channelScheduleManager"
+          class="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.facade.ChannelScheManagerFacade">
+        <property name="channelSchedulePersister" ref="channelSchedulePersister"></property>
+    </bean>
 
     <bean id="channelInfoPersister"
           class="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.persistantImpl.hibernate.ChannelInfoPersisterHibernate"
           scope="singleton">
         <constructor-arg index="0" ref="realTime"/>
-
+    </bean>
+    <bean id="channelSchedulePersister"
+          class="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.persistantImpl.hibernate.ChannelSchedulePersisterHibernate"
+          scope="singleton">
+        <constructor-arg index="0" ref="realTime"/>
     </bean>
     <!--Common Config for DataSource-->
 

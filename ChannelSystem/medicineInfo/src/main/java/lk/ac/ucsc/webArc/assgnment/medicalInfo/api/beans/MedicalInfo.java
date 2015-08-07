@@ -11,9 +11,9 @@ import java.util.Date;
  */
 public interface MedicalInfo {
 
-    String getMedicalInfoId();
+    int getMedicalInfoId();
 
-    void setMedicalInfoId(String medicalInfoId);
+    void setMedicalInfoId(int medicalInfoId);
 
     String getPatientNumber();
 

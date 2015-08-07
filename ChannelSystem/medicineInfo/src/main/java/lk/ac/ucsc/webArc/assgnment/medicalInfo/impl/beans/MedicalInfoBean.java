@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 public class MedicalInfoBean implements MedicalInfo {
-    private String medicalInfoId;
+    private int medicalInfoId;
     private String patientNumber;
     private String doctorNumber;
     private Date createDate;
@@ -21,12 +21,12 @@ public class MedicalInfoBean implements MedicalInfo {
 
 
     @Override
-    public String getMedicalInfoId() {
+    public int getMedicalInfoId() {
         return medicalInfoId;
     }
 
     @Override
-    public void setMedicalInfoId(String medicalInfoId) {
+    public void setMedicalInfoId(int medicalInfoId) {
         this.medicalInfoId = medicalInfoId;
     }
 
