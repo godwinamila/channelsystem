@@ -16,7 +16,7 @@ import java.util.List;
  */
     public interface ChannelInfoManager {
 
-    String addChannelInfo(ChannelInfo channelInfo) throws ChannelInfoException;
+    int addChannelInfo(ChannelInfo channelInfo) throws ChannelInfoException;
 
     void updateChannelInfo(ChannelInfo channelInfo) throws ChannelInfoException;
 

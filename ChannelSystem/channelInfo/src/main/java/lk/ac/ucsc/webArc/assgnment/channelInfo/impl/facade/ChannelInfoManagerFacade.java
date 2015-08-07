@@ -43,7 +43,7 @@ public class ChannelInfoManagerFacade implements ChannelInfoManager {
      * {@inheritDoc}
      */
     @Override
-    public String addChannelInfo(ChannelInfo channelInfo) throws ChannelInfoException {
+    public int addChannelInfo(ChannelInfo channelInfo) throws ChannelInfoException {
         logger.info("Adding the channelInfo -{} to cache", channelInfo);
         if (channelInfo == null) {
             throw new ChannelInfoException("channelInfo can't be null");

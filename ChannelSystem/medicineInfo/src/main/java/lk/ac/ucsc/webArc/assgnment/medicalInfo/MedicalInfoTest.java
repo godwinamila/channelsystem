@@ -15,7 +15,7 @@ public class MedicalInfoTest {
             MedicalInfoFactory channelInfoFactory = MedicalInfoFactory.getInstance();
             MedicalInfoManager channelInfoManager =channelInfoFactory.getMedicalInfoManager();
             MedicalInfo channelInfo=channelInfoManager.getEmptyMedicalInfo();
-            channelInfo.setMedicalInfoId("channel_1");
+            //channelInfo.setMedicalInfoId("channel_1");
             channelInfo.setChannelId("cha_001");
             channelInfo.setCreateDate(new Date());
             channelInfo.setDoctorNumber("doc_00001");

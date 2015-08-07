@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 
@@ -24,7 +25,9 @@
                         <td>
                             <form:form method="post" modelAttribute="loginForm" action="login">
                                 <h3>Sign In</h3>
+
                                 <table class="form-table">
+                                    <tr> <td class="has-error">${error}<c:out value="${error}"/></td></tr>
                                     <tr>
                                         <td><form:label path="userName">User Name:</form:label></td>
                                         <td><form:input path="userName"/></td>

@@ -16,7 +16,7 @@ import java.util.List;
  */
     public interface MedicalInfoManager {
 
-    String addMedicalInfo(MedicalInfo medicalInfo) throws MedicalInfoException;
+    int addMedicalInfo(MedicalInfo medicalInfo) throws MedicalInfoException;
 
     void updateMedicalInfo(MedicalInfo medicalInfo) throws MedicalInfoException;
 

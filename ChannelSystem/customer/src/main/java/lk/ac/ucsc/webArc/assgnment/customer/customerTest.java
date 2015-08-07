@@ -17,7 +17,7 @@ public class customerTest {
         try {
             CustomerFactory customerFactory = CustomerFactory.getInstance();
             CustomerManager customerManager =customerFactory.getCustomerManager();
-            Customer customer =customerManager.getEmptyCustomer("Cus_00001");
+            Customer customer =customerManager.getEmptyCustomer();
             customer.setAddress("634/38, Govinna Road, Athurugiriya");
             customer.setCustomerId(1);
             customer.setEmail("chamhetti@gmail.com");

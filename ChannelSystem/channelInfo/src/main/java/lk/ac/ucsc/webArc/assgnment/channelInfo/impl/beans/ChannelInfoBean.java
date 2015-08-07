@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 public class ChannelInfoBean implements ChannelInfo {
-    private String channelInfoId;
+    private int channelInfoId;
     private String patientNumber;
     private String doctorNumber;
     private Date createDate;
@@ -20,12 +20,12 @@ public class ChannelInfoBean implements ChannelInfo {
     private String location;
 
     @Override
-    public String getChannelInfoId() {
+    public int getChannelInfoId() {
         return channelInfoId;
     }
 
     @Override
-    public void setChannelInfoId(String channelInfoId) {
+    public void setChannelInfoId(int channelInfoId) {
         this.channelInfoId = channelInfoId;
     }
 

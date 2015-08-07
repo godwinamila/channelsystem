@@ -39,19 +39,6 @@ public class WelcomeController {
 
 
 
-	@RequestMapping(value = "/channelDoctor", method = RequestMethod.GET)
-	public String channelDoctorPage(Map<String, Object> model) {
-
-		logger.debug("register() is executed!");
-		return "channelDoctor";
-	}
-
-	@RequestMapping(value = "/channelDoctor", method = RequestMethod.POST)
-	public String channelDoctor(Map<String, Object> model) {
-
-		logger.debug("register() is executed!");
-		return "searchDoctor";
-	}
 
 
 

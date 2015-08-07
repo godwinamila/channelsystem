@@ -43,7 +43,7 @@ public class MedicalInfoManagerFacade implements MedicalInfoManager {
      * {@inheritDoc}
      */
     @Override
-    public String addMedicalInfo(MedicalInfo medicalInfo) throws MedicalInfoException {
+    public int addMedicalInfo(MedicalInfo medicalInfo) throws MedicalInfoException {
         logger.info("Adding the medicalInfo -{} to cache", medicalInfo);
         if (medicalInfo == null) {
             throw new MedicalInfoException("medicalInfo can't be null");
