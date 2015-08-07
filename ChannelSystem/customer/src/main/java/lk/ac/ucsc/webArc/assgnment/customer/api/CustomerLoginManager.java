@@ -42,4 +42,6 @@ public interface CustomerLoginManager {
      * @return true if success false otherwise
      */
     boolean logOut(String userName);
+
+    void setFailCount(String userName);
 }

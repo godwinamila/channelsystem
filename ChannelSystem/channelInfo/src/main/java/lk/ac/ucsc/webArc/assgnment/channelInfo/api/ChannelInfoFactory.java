@@ -69,6 +69,9 @@ public class ChannelInfoFactory {
     }
 
 
+    public ChannelScheduleManager getChannelScheduleManager() {
+        return context.getBean("channelScheduleManager", ChannelScheduleManager.class);
+    }
     /**
      * method to set context to ChannelInfoFactory
      * usage in unit testing only

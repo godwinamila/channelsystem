@@ -3,9 +3,11 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean" table="chaInfo_mm_channelInfo">
-        <id name="channelInfoId" type="java.lang.String">
-            <column name="CHANNELINFO_ID" length="20"/>
-            <generator class="assigned"/>
+        <id name="channelInfoId" type="java.lang.Integer">
+            <column name="CHANNELINFO_ID" length="10"/>
+            <generator class="sequence">
+                <param name="sequence">CHAN_INFO_SEQ</param>
+            </generator>
         </id>
         <property name="patientNumber" type="java.lang.String">
             <column name="CUSTOMER_NUMBER" not-null="true"  length="50"/>
@@ -21,6 +23,33 @@
         </property>
         <property name="location" type="java.lang.String">
             <column name="LOCATION" length="20"/>
+        </property>
+    </class>
+
+    <class name="lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelScheduleBean" table="chaInfo_mm_channelSchedule">
+        <id name="chanScheId" type="java.lang.Integer">
+            <column name="CHANNEL_SCH_ID" length="20"/>
+            <generator class="sequence">
+                <param name="sequence">CHAN_SCH_SEQ</param>
+            </generator>
+        </id>
+        <property name="doctorNumber" type="java.lang.String">
+            <column name="DOCTOR_NUMBER" not-null="true"  length="50"/>
+        </property>
+        <property name="roomNumber" type="java.lang.String">
+            <column name="ROOM_NUMBER" not-null="true"  length="20"/>
+        </property>
+        <property name="startTime" type="java.lang.String">
+            <column name="START_TIME" not-null="true"  length="20"/>
+        </property>
+        <property name="channelDate" type="java.util.Date">
+            <column name="CHANNEL_DATE"/>
+        </property>
+        <property name="appointmentNumber" type="java.lang.Integer">
+            <column name="APPMNT_NUMBER" length="10"/>
+        </property>
+        <property name="maxAppointment" type="java.lang.Integer">
+            <column name="MAX_APPMNT" length="10"/>
         </property>
     </class>
 

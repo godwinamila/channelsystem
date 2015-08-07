@@ -30,7 +30,7 @@ public interface CustomerManager {
 
     List<Customer> getAllCustomers() throws CustomerException;
 
-    Customer getEmptyCustomer(String customerNumber);
+    Customer getEmptyCustomer();
 
     LoginProfile getEmptyLoginProfile();
 
