@@ -23,7 +23,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import lk.ucsc.groupa.srichannel.model.Member;
+import lk.ucsc.groupa.srichannel.model.StaffMember;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,44 +31,44 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class MemberDaoImpl implements MemberDao {
+public class StaffMemberDaoImpl implements StaffMemberDao {
     @Autowired
     private EntityManager em;
 
-    public Member findById(Long id) {
-        return em.find(Member.class, id);
+    public StaffMember findById(Long id) {
+        return em.find(StaffMember.class, id);
     }
 
-    public Member findByEmail(String email) {
+    public StaffMember findByEmail(String email) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
-        Root<Member> member = criteria.from(Member.class);
+        CriteriaQuery<StaffMember> criteria = cb.createQuery(StaffMember.class);
+        Root<StaffMember> staffMember = criteria.from(StaffMember.class);
 
         /*
          * Swap criteria statements if you would like to try out type-safe criteria queries, a new
          * feature in JPA 2.0 criteria.select(member).orderBy(cb.asc(member.get(Member_.name)));
          */
 
-        criteria.select(member).where(cb.equal(member.get("email"), email));
+        criteria.select(staffMember).where(cb.equal(staffMember.get("email"), email));
         return em.createQuery(criteria).getSingleResult();
     }
 
-    public List<Member> findAllOrderedByName() {
+    public List<StaffMember> findAllOrderedByName() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
-        Root<Member> member = criteria.from(Member.class);
+        CriteriaQuery<StaffMember> criteria = cb.createQuery(StaffMember.class);
+        Root<StaffMember> staffMember = criteria.from(StaffMember.class);
 
         /*
          * Swap criteria statements if you would like to try out type-safe criteria queries, a new
          * feature in JPA 2.0 criteria.select(member).orderBy(cb.asc(member.get(Member_.name)));
          */
 
-        criteria.select(member).orderBy(cb.asc(member.get("name")));
+        criteria.select(staffMember).orderBy(cb.asc(staffMember.get("name")));
         return em.createQuery(criteria).getResultList();
     }
 
-    public void register(Member member) {
-        em.persist(member);
+    public void register(StaffMember staffMember) {
+        em.persist(staffMember);
         return;
     }
 }

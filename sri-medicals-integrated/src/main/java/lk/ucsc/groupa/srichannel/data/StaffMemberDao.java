@@ -18,14 +18,14 @@ package lk.ucsc.groupa.srichannel.data;
 
 import java.util.List;
 
-import lk.ucsc.groupa.srichannel.model.Member;
+import lk.ucsc.groupa.srichannel.model.StaffMember;
 
-public interface MemberDao {
-    public Member findById(Long id);
+public interface StaffMemberDao {
+    public StaffMember findById(Long id);
 
-    public Member findByEmail(String email);
+    public StaffMember findByEmail(String email);
 
-    public List<Member> findAllOrderedByName();
+    public List<StaffMember> findAllOrderedByName();
 
-    public void register(Member member);
+    public void register(StaffMember staffMember);
 }

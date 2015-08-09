@@ -18,8 +18,8 @@ package lk.ucsc.groupa.srichannel.test;
 
 import java.util.List;
 
-import lk.ucsc.groupa.srichannel.data.MemberDao;
-import lk.ucsc.groupa.srichannel.model.Member;
+import lk.ucsc.groupa.srichannel.data.StaffMemberDao;
+import lk.ucsc.groupa.srichannel.model.StaffMember;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,41 +38,41 @@ import org.springframework.transaction.annotation.Transactional;
 @TransactionConfiguration(defaultRollback = true)
 public class MemberDaoTest {
     @Autowired
-    private MemberDao memberDao;
+    private StaffMemberDao staffMemberDao;
 
     @Test
     public void testFindById() {
-        Member member = memberDao.findById(0l);
+        StaffMember staffMember = staffMemberDao.findById(0l);
 
-        assertEquals("John Smith", member.getName());
-        assertEquals("john.smith@mailinator.com", member.getEmail());
-        assertEquals("2125551212", member.getPhoneNumber());
+        assertEquals("John Smith", staffMember.getName());
+        assertEquals("john.smith@mailinator.com", staffMember.getEmail());
+        assertEquals("2125551212", staffMember.getPhoneNumber());
         return;
     }
 
     @Test
     public void testFindByEmail() {
-        Member member = memberDao.findByEmail("john.smith@mailinator.com");
+        StaffMember staffMember = staffMemberDao.findByEmail("john.smith@mailinator.com");
 
-        assertEquals("John Smith", member.getName());
-        assertEquals("john.smith@mailinator.com", member.getEmail());
-        assertEquals("2125551212", member.getPhoneNumber());
+        assertEquals("John Smith", staffMember.getName());
+        assertEquals("john.smith@mailinator.com", staffMember.getEmail());
+        assertEquals("2125551212", staffMember.getPhoneNumber());
         return;
     }
 
     @Test
     public void testRegister() {
-        Member member = new Member();
-        member.setEmail("jane.doe@mailinator.com");
-        member.setName("Jane Doe");
-        member.setPhoneNumber("2125552121");
+        StaffMember staffMember = new StaffMember();
+        staffMember.setEmail("jane.doe@mailinator.com");
+        staffMember.setName("Jane Doe");
+        staffMember.setPhoneNumber("2125552121");
 
-        memberDao.register(member);
-        Long id = member.getId();
+        staffMemberDao.register(staffMember);
+        Long id = staffMember.getId();
         assertNotNull(id);
 
-        assertEquals(2, memberDao.findAllOrderedByName().size());
-        Member newMember = memberDao.findById(id);
+        assertEquals(2, staffMemberDao.findAllOrderedByName().size());
+        StaffMember newMember = staffMemberDao.findById(id);
 
         assertEquals("Jane Doe", newMember.getName());
         assertEquals("jane.doe@mailinator.com", newMember.getEmail());
@@ -82,15 +82,15 @@ public class MemberDaoTest {
 
     @Test
     public void testFindAllOrderedByName() {
-        Member member = new Member();
-        member.setEmail("jane.doe@mailinator.com");
-        member.setName("Jane Doe");
-        member.setPhoneNumber("2125552121");
-        memberDao.register(member);
+        StaffMember staffMember = new StaffMember();
+        staffMember.setEmail("jane.doe@mailinator.com");
+        staffMember.setName("Jane Doe");
+        staffMember.setPhoneNumber("2125552121");
+        staffMemberDao.register(staffMember);
 
-        List<Member> members = memberDao.findAllOrderedByName();
-        assertEquals(2, members.size());
-        Member newMember = members.get(0);
+        List<StaffMember> staffMembers = staffMemberDao.findAllOrderedByName();
+        assertEquals(2, staffMembers.size());
+        StaffMember newMember = staffMembers.get(0);
 
         assertEquals("Jane Doe", newMember.getName());
         assertEquals("jane.doe@mailinator.com", newMember.getEmail());

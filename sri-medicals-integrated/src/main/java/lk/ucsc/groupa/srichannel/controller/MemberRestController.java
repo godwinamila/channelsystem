@@ -18,8 +18,8 @@ package lk.ucsc.groupa.srichannel.controller;
 
 import java.util.List;
 
-import lk.ucsc.groupa.srichannel.data.MemberDao;
-import lk.ucsc.groupa.srichannel.model.Member;
+import lk.ucsc.groupa.srichannel.data.StaffMemberDao;
+import lk.ucsc.groupa.srichannel.model.StaffMember;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,15 +32,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/rest/members")
 public class MemberRestController {
     @Autowired
-    private MemberDao memberDao;
+    private StaffMemberDao staffMemberDao;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody List<Member> listAllMembers() {
-        return memberDao.findAllOrderedByName();
+    public @ResponseBody List<StaffMember> listAllMembers() {
+        return staffMemberDao.findAllOrderedByName();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Member lookupMemberById(@PathVariable("id") Long id) {
-        return memberDao.findById(id);
+    public @ResponseBody StaffMember lookupMemberById(@PathVariable("id") Long id) {
+        return staffMemberDao.findById(id);
     }
 }

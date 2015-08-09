@@ -21,18 +21,21 @@ public class PatientController {
     private PatientDao patientDao;
 	
     @RequestMapping(value = "/register",method = RequestMethod.GET)
-    public String displaySortedMembers(Model model) {
+    public String getRegisterNewPatient(Model model) {
         model.addAttribute("newPatient", new Patient());
         model.addAttribute("patients", patientDao.findAllOrderedByName());
         return "patient/register";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String registerNewPatient(@Valid @ModelAttribute("newPatient") Patient newPatient, BindingResult result, Model model) {
+    public String postRegisterNewPatient(@Valid @ModelAttribute("newPatient") Patient newPatient, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             try {
+            	//set default password to test the login
+            	newPatient.setPassword("srimedicals");
             	patientDao.register(newPatient);
-                return "patient/success";
+            	//TODO send an email to the patient with temporary password
+                return "patient/regsuccess";
             } catch (UnexpectedRollbackException e) {
                 model.addAttribute("patients", patientDao.findAllOrderedByName());
                 model.addAttribute("error", e.getCause().getCause());

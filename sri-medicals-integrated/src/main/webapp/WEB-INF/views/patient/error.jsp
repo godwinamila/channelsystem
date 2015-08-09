@@ -22,7 +22,7 @@
   <div class="wrapper">
 	<!-- success message -->
 	<section class="error-msg">
-	  <p>Sorry... Patient registration failed. Email or NIC number already exist.</p>
+	  <p>Sorry... Error: ${error}</p>
 	</section>
   </div>
   <!-- end of wrapper -->
