@@ -114,7 +114,7 @@ public class UserPersisterHibernate implements UserPersister {
                 logger.warn("User info provided not enough to load from DB");
                 throw new UserException("User bean can't be null");
             }
-            String hql = "FROM lk.ac.ucsc.oms.user.implGeneral.beans.user.UserBean C WHERE C.userNumber = :user";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.user.impl.beans.UserBean C WHERE C.userNumber = :user";
             Query query = session.createQuery(hql);
             query.setParameter("user", userNumber);
             userBean = (UserBean) query.uniqueResult();
@@ -138,7 +138,7 @@ public class UserPersisterHibernate implements UserPersister {
         List<User> cashObjectLst = new ArrayList<>();
         Session session = sessionFactory.openSession();
         try {
-            String hql = "FROM lk.ac.ucsc.oms.user.implGeneral.beans.user.UserBean";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.user.impl.beans.UserBean";
             Query query = session.createQuery(hql);
             List results = query.list();
 
@@ -192,7 +192,7 @@ public class UserPersisterHibernate implements UserPersister {
         logger.info("Loading all the User codes from DB");
         Session session = sessionFactory.openSession();
         try {
-            String hql = "select max(C.userId) FROM lk.ac.ucsc.oms.user.implGeneral.beans.user.UserBean C ";
+            String hql = "select max(C.userId) FROM lk.ac.ucsc.webArc.assgnment.user.impl.beans.UserBean C ";
             Query query = session.createQuery(hql);
 
             Long results = (Long) query.uniqueResult();
@@ -219,7 +219,7 @@ public class UserPersisterHibernate implements UserPersister {
         Session session = sessionFactory.openSession();
         try {
             logger.info("Loading the user with user Id:{} ", userNumber);
-            String hql = "FROM lk.ac.ucsc.oms.user.implGeneral.beans.user.UserBean C WHERE C.userNumber = :userNumber";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.user.impl.beans.UserBean C WHERE C.userNumber = :userNumber";
             Query query = session.createQuery(hql);
             query.setParameter("userNumber", userNumber);
             userBean = (UserBean) query.uniqueResult();

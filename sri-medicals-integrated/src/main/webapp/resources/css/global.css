@@ -1,0 +1,297 @@
+/* Common styles */
+
+* {
+    font-family: sans-serif;
+}
+body,
+h1,
+h2,
+h3 ,h4{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: .8em;
+}
+.wrapper {
+    width: 960px;
+    padding: 5px; 5px 0 5px;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+    color: #888;
+}
+a:hover {
+    color: #000;
+}
+.text-center {
+    text-align: center;
+}
+
+/* Header */
+
+header {
+    background: #f7f7f7;
+    border-bottom: 2px solid #ddd;
+    box-shadow: 4px 0 20px #ccc;
+}
+header .wrapper {
+    position: relative;
+}
+header h1 {}
+header h1 a {
+    display: block;
+    width: 300px;
+    height: 80px;
+    background-image: url(../images/logo.png);
+    text-indent: -1000px;
+}
+header .account-bar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+}
+
+header nav {
+/*    background: #aaa;*/
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+header nav ul {
+    list-style: none;
+    line-height: 30px;
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li a {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+/*    background: black;*/
+/*    color: white;*/
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    border-bottom: 1px solid #ccc;
+}
+
+header nav ul li a:hover {
+    background: #444;
+    color: white;
+    border-radius: 4px 4px 0 0;
+    border-bottom-color: #fc0;
+}
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    color: #fff;
+}
+input[type=text],
+input[type=password] {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+}
+input[type=submit] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    border: 1px solid black;
+    background: black;
+    font-weight: bold;
+	cursor:pointer;
+}
+input[type=reset] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    border: 1px solid black;
+    background: black;
+    font-weight: bold;
+	cursor:pointer;
+}
+input[type=submit].green {
+    border: 1px solid darkgreen;
+    background: green;
+}
+input[type=submit]:hover {
+    border: 1px solid darkred;
+    background: darkred;
+}
+input[type=reset]:hover {
+    border: 1px solid darkred;
+    background: darkred;
+}
+select {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    width: 164px;
+    background: white;
+}
+
+/* Main content */
+
+.main-content {
+    margin-bottom: 50px;
+}
+
+/* Main content - common */
+
+.tab-alt {
+    border-collapse: collapse;
+}
+.tab-alt thead tr {
+    background: #000;
+    color: white;
+}
+.tab-alt thead th {
+    padding: 6px;
+    text-align: left;
+}
+.tab-alt tbody td {
+    padding: 6px;
+    border-bottom: 1px solid #ccc;
+}
+.tab-alt tbody tr:nth-child(even) {
+    background: #eee;
+}
+.tab-alt tbody tr:hover {
+    background: #ddd;
+}
+.form-table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.form-table td {
+    padding: 5px 10px;
+}
+
+/* Content box */
+
+.content-box {
+    padding: 10px;
+}
+.content-box h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.content-box h4 {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0 5px 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.success-msg {
+	margin-top: 5px;
+    padding: 10px;
+    border-left: 2px solid green;
+    background: lightgreen;
+    margin-bottom: 5px;
+}
+
+.error-msg {
+	margin-top: 5px;
+    padding: 10px;
+    border-left: 2px solid red;
+    background: red;
+    margin-bottom: 5px;
+}
+
+/* login form */
+
+.login-box {
+    /*
+    background: #eee;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+*/
+}
+.login-box input[type=text],
+.login-box input[type=password] {
+    width: 200px;
+}
+
+/* User registration */
+span.invalid {
+    padding-left: 3px;
+    color: red;
+    font: 85%/1 sans-serif;
+}
+
+/* Seach doctor */
+
+.search-doc-box {}
+.search-doc-box .tab-doc-search-res {
+    width: 100%;
+}
+.search-doc-box .tab-doc-search-res thead th {}
+.search-doc-box .tab-doc-search-res thead tr th:nth-child(1) {
+    width: 40%;
+}
+.search-doc-box .tab-doc-search-res thead tr th:nth-child(2) {
+    width: 40%;
+}
+.search-doc-box .tab-doc-search-res thead tr th:nth-child(3) {
+    width: 20%;
+}
+.search-doc-box .tab-doc-search-res tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+/* Patient search */
+
+.search-pat-box {}
+.search-pat-box .tab-search-pat-res {
+    width: 100%;
+}
+.search-pat-box .tab-search-pat-res th:nth-child(1) {}
+.search-pat-box .tab-search-pat-res th:nth-child(2) {
+    width: 20%
+}
+.search-pat-box .tab-search-pat-res th:nth-child(3) {
+    width: 20%;
+}
+.search-pat-box .tab-search-pat-res th:nth-child(4) {
+    width: 10%;
+}
+.search-pat-box .tab-search-pat-res td:nth-child(4) {
+    text-align: center;
+}
+
+/* Patient details */
+
+.pat-view-box {}
+.pat-view-box .tab-info {
+    margin-bottom: 20px;
+}
+.pat-view-box .tab-info label {
+    font-weight: bold;
+}
+.pat-view-box .tab-info td {
+    padding: 6px;
+}
+.pat-view-box .tab-history {
+    width: 100%;
+}

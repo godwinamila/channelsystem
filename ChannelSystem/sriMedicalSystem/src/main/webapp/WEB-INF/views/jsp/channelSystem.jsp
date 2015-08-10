@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 
@@ -11,26 +13,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="wrapper">
-            <div>
-                <h1><a href="#">Sri Medicals</a></h1>
-
-                <div class="account-bar">
-                    <a href="#"></a> | <a href="#">Logout</a>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="searchDoctor">Search Doctor</a></li>
-                    <li><a href="#">Check Appointments</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<%@ include file="header.jsp" %>
 
     <div class="main-content">
         <div class="wrapper">
@@ -40,24 +23,20 @@
                 <table style="width: 100%;">
                     <tr>
                         <td>
-                            <form name="login-form">
+                            <form:form method="post" modelAttribute="loginForm" action="login">
                                 <h3>Sign In</h3>
+
                                 <table class="form-table">
+                                    <tr> <td class="has-error">${error}<c:out value="${error}"/></td></tr>
                                     <tr>
-                                        <td>
-                                            <label>UserName: </label>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="userName" />
-                                        </td>
+                                        <td><form:label path="userName">User Name:</form:label></td>
+                                        <td><form:input path="userName"/></td>
+                                        <td><form:errors class="invalid" path="userName"/></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <label>Password: </label>
-                                        </td>
-                                        <td>
-                                            <input type="password" name="password" />
-                                        </td>
+                                        <td><form:label path="password">Password:</form:label></td>
+                                        <td><form:input path="password"/></td>
+                                        <td><form:errors class="invalid" path="password"/></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -76,7 +55,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                            </form>
+                            </form:form>
                         </td>
                         <td>
                             <a href="register">
@@ -94,12 +73,7 @@
     </div>
     <!-- end of main content -->
 
-
-    <footer>
-        <div class="wrapper">
-            <p class="copyright">&copy; 2015 Sri Medicals. All rights reserved.</p>
-        </div>
-    </footer>
+    <%@ include file="footer.jsp" %>
 
 </body>
 

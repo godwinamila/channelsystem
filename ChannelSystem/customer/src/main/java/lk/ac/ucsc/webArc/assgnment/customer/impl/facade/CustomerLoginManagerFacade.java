@@ -85,7 +85,7 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
                 return reply;
             }
             logger.debug("check the status of the login profile");
-            if (loginProfile.getStatus() != 1) {
+            if (loginProfile.getStatus() != 2) {
                 logger.info("customer account has " + loginProfile.getStatus());
                 reply ="Invalid Login - Inactive customer";
                 return reply;
@@ -98,7 +98,7 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
                 loginProfile.setFailedAttemptCount(loginProfile.getFailedAttemptCount() + 1);
                 if (loginProfile.getFailedAttemptCount() >= allowedFailedAttempt) {
                     logger.info("Maximum failed count exceed hence lock the account");
-                    reply ="Invalid Login - Accout Lock";
+                    reply ="Invalid Login - Account Lock";
                     return reply;
                 } else {
                     reply ="Invalid Login - Inactive customer";
@@ -186,6 +186,9 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
                 return "-1";
             }
             LoginProfile loginProfile = customer.getLoginProfile();
+            if(loginProfile.getStatus()!=1){
+                return "Account is not Active";
+            }
             logger.debug("changePassword : loginProfile : ", loginProfile);
             if (!validatePassword(loginProfile.getPassword(), oldPassword)) {
                 logger.debug("changePassword : invalid password");
@@ -243,4 +246,23 @@ public class CustomerLoginManagerFacade implements CustomerLoginManager {
         return result;
     }
 
+    @Override
+    public void setFailCount(String userName) {
+        try {
+            Customer customer = customerManagerFacade.getCustomerByCustomerNumber(userName);
+            if (customer == null) {
+                return ;
+            }
+            LoginProfile loginProfile =customer.getLoginProfile();
+            loginProfile.setFailedAttemptCount(loginProfile.getFailedAttemptCount()+1);
+            if(loginProfile.getFailedAttemptCount()>3){
+                loginProfile.setStatus(3);
+            }
+            customer.setLoginProfile(loginProfile);
+            customerManagerFacade.updateCustomer(customer);
+            return ;
+        } catch (Exception e) {
+            return ;
+        }
+    }
 }

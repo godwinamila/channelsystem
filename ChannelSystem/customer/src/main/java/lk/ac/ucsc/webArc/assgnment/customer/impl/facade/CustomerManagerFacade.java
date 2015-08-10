@@ -134,8 +134,17 @@ public class CustomerManagerFacade implements CustomerManager {
      * {@inheritDoc}
      */
     @Override
-    public Customer getEmptyCustomer(String customerNumber) {
-        return new CustomerBean(customerNumber);
+    public Customer getEmptyCustomer() {
+        Customer customer =new CustomerBean();
+        try {
+            long cusId = customerPersister.getLastCustomerId();
+            String customerNumber = "CUS-" + (10000 + cusId);
+            customer.setCustomerId(cusId+1);
+            customer.setCustomerNumber(customerNumber);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+        }
+        return customer;
     }
 
 
@@ -162,7 +171,12 @@ public class CustomerManagerFacade implements CustomerManager {
         }
     }
 
-
-
-
+    @Override
+    public long getLastCustomerId() {
+        try {
+            return customerPersister.getLastCustomerId();
+        }catch (Exception e){
+            return 1;
+        }
+    }
 }

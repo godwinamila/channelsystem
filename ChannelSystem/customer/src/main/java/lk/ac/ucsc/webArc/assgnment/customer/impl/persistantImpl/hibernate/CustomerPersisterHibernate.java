@@ -114,7 +114,7 @@ public class CustomerPersisterHibernate implements CustomerPersister {
                 logger.warn("Customer info provided not enough to load from DB");
                 throw new CustomerException("Customer bean can't be null");
             }
-            String hql = "FROM lk.ac.ucsc.oms.customer.implGeneral.beans.customer.CustomerBean C WHERE C.customerNumber = :customer";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.customer.impl.beans.customer.CustomerBean C WHERE C.customerNumber = :customer";
             Query query = session.createQuery(hql);
             query.setParameter("customer", customerNumber);
             customerBean = (CustomerBean) query.uniqueResult();
@@ -138,7 +138,7 @@ public class CustomerPersisterHibernate implements CustomerPersister {
         List<Customer> cashObjectLst = new ArrayList<>();
         Session session = sessionFactory.openSession();
         try {
-            String hql = "FROM lk.ac.ucsc.oms.customer.implGeneral.beans.customer.CustomerBean";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.customer.impl.beans.customer.CustomerBean";
             Query query = session.createQuery(hql);
             List results = query.list();
 
@@ -188,18 +188,18 @@ public class CustomerPersisterHibernate implements CustomerPersister {
      * {@inheritDoc}
      */
     @Override
-    public String getLastCustomerId() throws CustomerException {
+    public long getLastCustomerId() throws CustomerException {
         logger.info("Loading all the Customer codes from DB");
         Session session = sessionFactory.openSession();
         try {
-            String hql = "select max(C.customerId) FROM lk.ac.ucsc.oms.customer.implGeneral.beans.customer.CustomerBean C ";
+            String hql = "select max(C.customerId) FROM lk.ac.ucsc.webArc.assgnment.customer.impl.beans.customer.CustomerBean C ";
             Query query = session.createQuery(hql);
 
             Long results = (Long) query.uniqueResult();
             if (results != null) {
-                return results.toString();
+                return results;
             } else {
-                return "0";
+                return 1;
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -219,7 +219,7 @@ public class CustomerPersisterHibernate implements CustomerPersister {
         Session session = sessionFactory.openSession();
         try {
             logger.info("Loading the customer with customer Id:{} ", customerNumber);
-            String hql = "FROM lk.ac.ucsc.oms.customer.implGeneral.beans.customer.CustomerBean C WHERE C.customerNumber = :customerNumber";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.customer.impl.beans.customer.CustomerBean C WHERE C.customerNumber = :customerNumber";
             Query query = session.createQuery(hql);
             query.setParameter("customerNumber", customerNumber);
             customerBean = (CustomerBean) query.uniqueResult();

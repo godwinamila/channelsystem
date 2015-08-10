@@ -30,10 +30,12 @@ public interface CustomerManager {
 
     List<Customer> getAllCustomers() throws CustomerException;
 
-    Customer getEmptyCustomer(String customerNumber);
+    Customer getEmptyCustomer();
 
     LoginProfile getEmptyLoginProfile();
 
     void validateCustomer(Customer customer) throws CustomerException;
+
+    long getLastCustomerId();
 }
 
