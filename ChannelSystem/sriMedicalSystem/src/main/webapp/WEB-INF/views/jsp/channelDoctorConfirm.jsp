@@ -46,7 +46,7 @@
         <section class="search-doc-channel-box content-box">
             <h3>Channel Doctor</h3>
 
-            <form:form method="post" modelAttribute="channelForm" action="channelDoctor">
+            <form:form method="post" modelAttribute="channelForm" action="channelDoctorConfirm">
                 <table class="form-table">
                     <tr>
                         <td colspan="2">
@@ -85,21 +85,22 @@
                     </tr>
                     <tr>
                         <td><form:label path="channelDate">Date:</form:label></td>
-                        <td><form:input path="channelDate" placeholder="DD/MM/YYYY"/></td>
+                        <td><form:hidden path="channelDate"/>${channelForm.channelDate}</td>
                     </tr>
                     <tr>
                         <td><form:label path="timeSlot">Time:</form:label></td>
-                        <td><form:input path="timeSlot" placeholder="HH:MM"/></td>
+                        <td><form:hidden path="timeSlot"/>${channelForm.timeSlot}</td>
                     </tr>
                     <tr>
-                        <td><form:label path="telePhone">Appointment No:</form:label></td>
-                        <td><form:hidden path="telePhone"/>${channelForm.appntNumber}</td>
+                        <td><form:label path="appntNumber">Appointment No:</form:label></td>
+                        <td><form:hidden path="appntNumber"/>${channelForm.appntNumber}</td>
                     </tr>
                     <tr>
-                        <td>Room No:</td>
-                        <td>508</td>
-                        <td><form:label path="telePhone">Room No:</form:label></td>
-                        <td><form:hidden path="telePhone"/>${channelForm.roomNo}</td>
+                        <td><form:label path="roomNo">Room No:</form:label></td>
+                        <td><form:hidden path="roomNo"/>${channelForm.roomNo}</td>
+                        <form:hidden path="doctorNumber"/>
+                        <form:hidden path="customerNumber"/>
+                        <form:hidden path="channelSheId"/>
                     </tr>
                     <tr>
                         <td></td>
