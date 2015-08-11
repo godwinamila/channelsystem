@@ -5,6 +5,7 @@ package lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms;
  */
 public class ChannelForm {
     private String doctorName;
+    private String doctorNumber;
     private String speciality;
     private String patientName;
     private String nicNumber;
@@ -13,6 +14,8 @@ public class ChannelForm {
     private String timeSlot;
     private String appntNumber;
     private String roomNo;
+    private String customerNumber;
+    private String channelSheId;
 
     public String getDoctorName() {
         return doctorName;
@@ -84,5 +87,29 @@ public class ChannelForm {
 
     public void setRoomNo(String roomNo) {
         this.roomNo = roomNo;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
+    public String getChannelSheId() {
+        return channelSheId;
+    }
+
+    public void setChannelSheId(String channelSheId) {
+        this.channelSheId = channelSheId;
+    }
+
+    public String getDoctorNumber() {
+        return doctorNumber;
+    }
+
+    public void setDoctorNumber(String doctorNumber) {
+        this.doctorNumber = doctorNumber;
     }
 }

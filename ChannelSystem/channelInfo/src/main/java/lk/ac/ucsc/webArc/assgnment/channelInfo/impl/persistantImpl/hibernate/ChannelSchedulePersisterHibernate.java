@@ -118,7 +118,7 @@ public class ChannelSchedulePersisterHibernate implements ChannelSchedulePersist
             }
             String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelScheduleBean C WHERE C.chanScheId = :chanInId";
             Query query = session.createQuery(hql);
-            query.setParameter("chanInId", channelScheduleId);
+            query.setParameter("chanInId", Integer.parseInt(channelScheduleId));
             channelScheduleBean = (ChannelScheduleBean) query.uniqueResult();
 
             logger.info("Loaded ChannelSchedule:{}", channelScheduleBean);

@@ -33,7 +33,7 @@
         <property name="hibernate.search.default.indexBase">target</property>
         <property name="hibernate.search.default.exclusive_index_use">false</property>
         <property name="hibernate.search.lucene_version">LUCENE_CURRENT</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <!-- Names the annotated entity class -->
         <!-- <mapping class="org.hibernate.tutorial.annotations.Event"/>-->
         <mapping resource="impl/channelInfo.hbm.xml"/>

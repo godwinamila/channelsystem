@@ -221,10 +221,16 @@ select {
 }
 .search-doc-box .tab-doc-search-res thead th {}
 .search-doc-box .tab-doc-search-res thead tr th:nth-child(1) {
-    width: 40%;
+    width: 20%;
 }
 .search-doc-box .tab-doc-search-res thead tr th:nth-child(2) {
-    width: 40%;
+    width: 20%;
+}
+.search-doc-box .tab-doc-search-res thead tr th:nth-child(3) {
+    width: 20%;
+}
+.search-doc-box .tab-doc-search-res thead tr th:nth-child(3) {
+    width: 20%;
 }
 .search-doc-box .tab-doc-search-res thead tr th:nth-child(3) {
     width: 20%;
