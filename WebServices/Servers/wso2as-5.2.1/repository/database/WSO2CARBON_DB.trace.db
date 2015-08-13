@@ -1,0 +1,3 @@
+08-13 14:53:57 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "IDP_BASE_TABLE" not found; SQL statement:
+select * from IDP_BASE_TABLE [42102-140]

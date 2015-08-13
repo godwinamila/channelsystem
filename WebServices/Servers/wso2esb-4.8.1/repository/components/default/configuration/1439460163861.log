@@ -1,0 +1,78 @@
+!SESSION 2015-08-13 15:32:48.990 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+
+!ENTRY org.wso2.carbon.rule.backend 4 0 2015-08-13 15:32:48.991
+!MESSAGE [SCR] Found components with duplicated names inside their bundle! This component will not be processed: Component[
+	name = ruleService.component
+	factory = null
+	autoenable = true
+	immediate = true
+	implementation = org.wso2.carbon.rule.backend.drools.ds.RuleServiceDS
+	state = Unsatisfied
+	properties = {service.pid=ruleService.component}
+	serviceFactory = false
+	serviceInterface = null
+	references = {
+		Reference[name = registry.service, interface = org.wso2.carbon.registry.core.service.RegistryService, policy = dynamic, cardinality = 1..1, target = null, bind = setRegistryService, unbind = unsetRegistryService]
+	}
+	located in bundle = org.wso2.carbon.rule.backend_4.2.0 [409]
+] 
+
+!ENTRY org.wso2.carbon.rule.backend 4 0 2015-08-13 15:32:48.991
+!MESSAGE [SCR] Found components with duplicated names inside their bundle! This component will not be processed: Component[
+	name = ruleService.component
+	factory = null
+	autoenable = true
+	immediate = true
+	implementation = org.wso2.carbon.rule.backend.drools.ds.RuleServiceDS
+	state = Unsatisfied
+	properties = {service.pid=ruleService.component}
+	serviceFactory = false
+	serviceInterface = null
+	references = {
+		Reference[name = registry.service, interface = org.wso2.carbon.registry.core.service.RegistryService, policy = dynamic, cardinality = 1..1, target = null, bind = setRegistryService, unbind = unsetRegistryService]
+	}
+	located in bundle = org.wso2.carbon.rule.backend_4.2.0 [409]
+] 
+
+!ENTRY org.wso2.carbon.sequences 2 0 2015-08-13 15:32:49.224
+!MESSAGE [SCR] Found components with duplicated names! Details: 
+Component1 : Component[
+	name = org.wso2.carbon.sequences
+	factory = null
+	autoenable = true
+	immediate = true
+	implementation = org.wso2.carbon.sequences.internal.SequenceEditorServiceComponent
+	state = Unsatisfied
+	properties = {service.pid=org.wso2.carbon.sequences}
+	serviceFactory = false
+	serviceInterface = null
+	references = {
+		Reference[name = configuration.context.service, interface = org.wso2.carbon.utils.ConfigurationContextService, policy = dynamic, cardinality = 1..1, target = null, bind = setConfigurationContextService, unbind = unsetConfigurationContextService]
+		Reference[name = synapse.config.service, interface = org.wso2.carbon.mediation.initializer.services.SynapseConfigurationService, policy = dynamic, cardinality = 1..1, target = null, bind = setSynapseConfigurationService, unbind = unsetSynapseConfigurationService]
+		Reference[name = synapse.env.service, interface = org.wso2.carbon.mediation.initializer.services.SynapseEnvironmentService, policy = dynamic, cardinality = 1..n, target = null, bind = setSynapseEnvironmentService, unbind = unsetSynapseEnvironmentService]
+		Reference[name = registry.service, interface = org.wso2.carbon.registry.core.service.RegistryService, policy = dynamic, cardinality = 1..1, target = null, bind = setRegistryService, unbind = unsetRegistryService]
+		Reference[name = dependency.mgt.service, interface = org.wso2.carbon.mediation.dependency.mgt.services.DependencyManagementService, policy = dynamic, cardinality = 0..1, target = null, bind = setDependencyManager, unbind = unsetDependencyManager]
+		Reference[name = synapse.registrations.service, interface = org.wso2.carbon.mediation.initializer.services.SynapseRegistrationsService, policy = dynamic, cardinality = 1..n, target = null, bind = setSynapseRegistrationsService, unbind = unsetSynapseRegistrationsService]
+	}
+	located in bundle = org.wso2.carbon.sequences_4.2.0 [418]
+]
+Component2: Component[
+	name = org.wso2.carbon.sequences
+	factory = null
+	autoenable = true
+	immediate = true
+	implementation = org.wso2.carbon.mediation.configadmin.ConfigAdminServiceComponent
+	state = Unsatisfied
+	properties = {service.pid=org.wso2.carbon.sequences}
+	serviceFactory = false
+	serviceInterface = null
+	references = {
+		Reference[name = synapse.registrations.service, interface = org.wso2.carbon.mediation.initializer.services.SynapseRegistrationsService, policy = dynamic, cardinality = 1..n, target = null, bind = setSynapseRegistrationsService, unbind = unsetSynapseRegistrationsService]
+		Reference[name = config.tracking.service, interface = org.wso2.carbon.mediation.dependency.mgt.services.ConfigurationTrackingService, policy = dynamic, cardinality = 1..1, target = null, bind = setConfigTrackingService, unbind = unsetConfigTrackingService]
+	}
+	located in bundle = org.wso2.carbon.mediation.configadmin_4.2.0 [245]
+]  
