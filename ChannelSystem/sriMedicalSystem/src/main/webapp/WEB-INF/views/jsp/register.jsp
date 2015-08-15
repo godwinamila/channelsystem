@@ -17,26 +17,7 @@
 </head>
 
 <body>
-<header>
-  <div class="wrapper">
-    <div>
-      <h1><a href="#">Sri Medicals</a></h1>
-
-      <div class="account-bar">
-        <a href="#"></a> | <a href="#">Logout</a>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="./">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Search Doctor</a></li>
-        <li><a href="#">Check Appointments</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<%@include file="header.jsp"%>
 
 <div class="main-content">
   <div class="wrapper">
@@ -102,12 +83,7 @@
 </div>
 <!-- end of main content -->
 
-
-<footer>
-  <div class="wrapper">
-    <p class="copyright">&copy; 2015 Sri Medicals. All rights reserved.</p>
-  </div>
-</footer>
+<%@include file="footer.jsp"%>
 
 </body>
 

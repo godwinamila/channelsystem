@@ -37,13 +37,14 @@
         </thead>
         <tbody>
         <c:if test="${not empty lists}">
-          <tr>
+
             <c:forEach var="listValue" items="${lists}">
+              <tr>
               <td>${listValue.firstName} ${listValue.lastName} </td>
               <td>${listValue.speciality}  </td>
               <td><a href="channelDoctor?doctorNumber=${listValue.doctorNumber}">Book Now</a></td>
+              </tr>
             </c:forEach>
-          </tr>
 
         </c:if>
         </tbody>

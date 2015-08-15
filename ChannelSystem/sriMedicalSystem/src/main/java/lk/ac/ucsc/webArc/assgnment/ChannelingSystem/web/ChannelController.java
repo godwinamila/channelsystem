@@ -2,6 +2,7 @@ package lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web;
 
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.service.CommonServices;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.ChannelForm;
+import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.ChannelHistoryForm;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.RegisterForm;
 import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoFactory;
 import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoManager;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +54,7 @@ public class ChannelController {
     @RequestMapping(value = "/channelDoctorConfirm", method = RequestMethod.GET)
       String channelDoctorConfPage(Model model, HttpServletRequest reg) {
         try {
-            SimpleDateFormat sdf =new SimpleDateFormat("YYYY/MM/DD");
+            SimpleDateFormat sdf =new SimpleDateFormat("YYYY/MM/dd");
             String channelId = reg.getParameter("channelId");
             ChannelScheduleManager channelScheduleManager =channelInfoFactory.getChannelScheduleManager();
             ChannelSchedule channelSchedule =channelScheduleManager.getChannelSchedule(channelId);
@@ -111,6 +113,7 @@ public class ChannelController {
             channelInfo.setDoctorNumber(channelForm.getDoctorNumber());
             channelInfo.setChannelStatus(1);
             channelInfo.setCreateDate(new Date());
+            channelInfo.setChannelDate(channelForm.getChannelDate());
             channelInfoManager.addChannelInfo(channelInfo);
             ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
             ChannelSchedule channelSchedule =channelScheduleManager.getChannelSchedule(channelForm.getChannelSheId());
@@ -134,6 +137,51 @@ public class ChannelController {
 
         }
 
+    }
+
+    @RequestMapping(value = "/channelInfo", method = RequestMethod.GET)
+    String customerChannelInfo(Model model, HttpServletRequest reg) {
+        try {
+            SimpleDateFormat sfd =new SimpleDateFormat("yyyy/MM/dd");
+            String customerNumber = (String)reg.getSession().getAttribute("customerNumber");
+            ChannelInfoManager channelInfoManager = channelInfoFactory.getChannelInfoManager();
+            List<ChannelInfo> channelInfoList= channelInfoManager.getChannelInfoForCustomer(customerNumber);
+            ChannelHistoryForm channelHistoryForm;
+            DoctorManager doctorManager =doctorFactory.getDoctorManager();
+            List<ChannelHistoryForm> channelHistoryFormList =new ArrayList<>();
+            for(ChannelInfo channelInfo : channelInfoList){
+                channelHistoryForm =new ChannelHistoryForm();
+                channelHistoryForm.setChannelDate(channelInfo.getChannelDate());
+                channelHistoryForm.setTimeSlot(channelInfo.getTimeSlot());
+                channelHistoryForm.setChannelId(""+channelInfo.getChannelInfoId());
+                String channelStatus="PENDING";
+                switch (channelInfo.getChannelStatus()){
+                    case 1:
+                        channelStatus="PENDING";
+                        break;
+                    case 2:
+                        channelStatus ="SUCCESS";
+                        break;
+                    case 3:
+                        channelStatus ="ABSENT";
+                        break;
+                }
+                channelHistoryForm.setStatus(channelStatus);
+                Doctor doctor = doctorManager.getDoctorByDoctorNumber(channelInfo.getDoctorNumber());
+                String doctorName =null;
+                if(doctor!=null){
+                    doctorName = doctor.getFirstName()+" "+ doctor.getLastName();
+                }
+                channelHistoryForm.setDoctorName(doctorName);
+                channelHistoryForm.setSpeciality(doctor.getSpeciality());
+                channelHistoryFormList.add(channelHistoryForm);
+            }
+            model.addAttribute("lists", channelHistoryFormList);
+            logger.debug("register() is executed!");
+        }catch (Exception e){
+
+        }
+        return "channelInfo";
     }
 
 }

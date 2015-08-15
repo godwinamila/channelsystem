@@ -38,4 +38,8 @@ public interface ChannelInfo {
     String getLocation();
 
     void setLocation(String location);
+
+    String getChannelDate();
+
+    void setChannelDate(String channelDate);
 }

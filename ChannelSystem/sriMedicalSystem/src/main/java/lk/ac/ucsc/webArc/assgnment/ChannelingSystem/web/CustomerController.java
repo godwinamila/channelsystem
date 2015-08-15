@@ -66,6 +66,18 @@ public class CustomerController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest reg,  Model model) {
+        try {
+            reg.getSession().setAttribute("isAuthenticated","false");
+            reg.getSession().setAttribute("customerNumber","");
+            reg.getSession().setAttribute("name","");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerPage(Model model) {
 
