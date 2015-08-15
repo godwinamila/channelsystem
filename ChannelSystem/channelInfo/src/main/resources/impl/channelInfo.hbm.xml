@@ -16,13 +16,19 @@
             <column name="DOCTOR_NUMBER" not-null="true"  length="20"/>
         </property>
         <property name="createDate" type="java.util.Date">
-            <column name="CREATE_DATE"/>
+        <column name="CREATE_DATE"/>
+    </property>
+        <property name="channelDate" type="java.lang.String">
+            <column name="CHANNEL_DATE"/>
         </property>
         <property name="timeSlot" type="java.lang.String">
             <column name="TIME_SLOT" length="20"/>
         </property>
         <property name="location" type="java.lang.String">
-            <column name="LOCATION" length="20"/>
+        <column name="LOCATION" length="20"/>
+    </property>
+        <property name="channelStatus" type="java.lang.Integer">
+            <column name="status" length="10" default="1"/>
         </property>
     </class>
 
@@ -51,6 +57,7 @@
         <property name="maxAppointment" type="java.lang.Integer">
             <column name="MAX_APPMNT" length="10"/>
         </property>
+
     </class>
 
 </hibernate-mapping>

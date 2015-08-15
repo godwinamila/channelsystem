@@ -50,8 +50,6 @@
                             <td><a href="channelDoctorConfirm?channelId=${listValue.chanScheId}">Book Now</a></td>
                         </tr>
                     </c:forEach>
-
-
                 </c:if>
                 </tbody>
             </table>

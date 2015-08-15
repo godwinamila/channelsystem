@@ -14,6 +14,7 @@ public class ChannelInfoBean implements ChannelInfo {
     private int channelInfoId;
     private String patientNumber;
     private String doctorNumber;
+    private String channelDate;
     private Date createDate;
     private String timeSlot;
     private int channelStatus;
@@ -87,5 +88,15 @@ public class ChannelInfoBean implements ChannelInfo {
     @Override
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Override
+    public String getChannelDate() {
+        return channelDate;
+    }
+
+    @Override
+    public void setChannelDate(String channelDate) {
+        this.channelDate = channelDate;
     }
 }
