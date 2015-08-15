@@ -120,6 +120,7 @@ public class ChannelController {
             channelSchedule.setAppointmentNumber(channelSchedule.getAppointmentNumber() +1);
             channelScheduleManager.updateChannelSchedule(channelSchedule);
             emailUserCredential(channelForm.getCustomerNumber(),channelSchedule,channelForm.getDoctorName());
+            //todo update in the old system calling web service
         } catch (Exception e) {
 
         }
