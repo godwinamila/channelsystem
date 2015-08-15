@@ -5,12 +5,12 @@
   Time: 11:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!doctype html>
 <html>
 
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Sri Medicals</title>
    <link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/global.css"/>"/>
 </head>
@@ -21,8 +21,8 @@
 <div class="main-content">
   <div class="wrapper">
 	<!-- success message -->
-	<section class="success-msg">
-	  <p>This is the ERROR message</p>
+	<section class="error-msg">
+	  <p>Sorry... Patient registration failed. Email or NIC number already exist.</p>
 	</section>
   </div>
   <!-- end of wrapper -->

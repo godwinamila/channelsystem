@@ -19,6 +19,8 @@
 
 <%@ include file="../header.jsp" %>
 
+    <div class="main-content">
+        <div class="wrapper">
 <section class="user-reg-box content-box">
   <h3>Register Patient</h3>
 
@@ -72,18 +74,17 @@
       </tr>
 
       <tr>
-		<td>
-			<input type="submit" value="Register" class="register"/>
-			<input type="reset" value="Cancel" class="cancel"/>
+		<td></td>
+		<td colspan="2">
+			<input type="submit" value="Register"/>
+			<input type="reset" value="Cancel"/>
 		</td>
 	</tr>
 
     </table>
 
  </form:form>
-</section>
-
-<h2>Patients List</h2>
+ <h2>Patients List</h2>
         <c:choose>
             <c:when test="${patients.size()==0}">
                 <em>No registered patients.</em>
@@ -112,6 +113,12 @@
             </c:otherwise>
         </c:choose>
 
+
+</section>
+        </div>
+        <!-- end of wrapper -->
+    </div>
+    <!-- end of main content -->
 
 <%@ include file="../footer.jsp" %>
 </body>

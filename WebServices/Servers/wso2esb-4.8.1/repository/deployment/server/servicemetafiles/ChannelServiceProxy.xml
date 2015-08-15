@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup name="ChannelServiceProxy" successfullyAdded="true">
+   <service name="ChannelServiceProxy"
+            serviceDocumentation="ChannelService"
+            exposedAllTransports="false"
+            serviceDeployedTime="1439458173008"
+            successfullyAdded="true">
+      <operation name="addChannel">
+         <module name="addressing" version="4.2.0" type="engagedModules"/>
+         <module name="POXSecurityModule" version="4.2.2" type="engagedModules"/>
+         <module name="wso2statistics" version="4.2.2" type="engagedModules"/>
+         <module name="ServerAdminModule" version="4.2.0" type="engagedModules"/>
+         <module name="pagination" version="4.2.0" type="engagedModules"/>
+      </operation>
+      <operation name="getAllChannels">
+         <module name="addressing" version="4.2.0" type="engagedModules"/>
+         <module name="POXSecurityModule" version="4.2.2" type="engagedModules"/>
+         <module name="wso2statistics" version="4.2.2" type="engagedModules"/>
+         <module name="ServerAdminModule" version="4.2.0" type="engagedModules"/>
+         <module name="pagination" version="4.2.0" type="engagedModules"/>
+      </operation>
+      <bindings>
+         <binding name="ChannelServiceProxyHttpBinding">
+            <operation name="addChannel"/>
+            <operation name="getAllChannels"/>
+         </binding>
+         <binding name="ChannelServiceProxySoap12Binding">
+            <operation name="addChannel"/>
+            <operation name="getAllChannels"/>
+         </binding>
+         <binding name="ChannelServiceProxySoap11Binding">
+            <operation name="addChannel"/>
+            <operation name="getAllChannels"/>
+         </binding>
+      </bindings>
+      <policies/>
+      <module name="addressing" version="4.2.0" type="engagedModules"/>
+      <module name="POXSecurityModule" version="4.2.2" type="engagedModules"/>
+      <module name="wso2statistics" version="4.2.2" type="engagedModules"/>
+      <module name="ServerAdminModule" version="4.2.0" type="engagedModules"/>
+      <module name="pagination" version="4.2.0" type="engagedModules"/>
+      <parameter name="serviceType" type="1">proxy</parameter>
+      <parameter name="interface" type="1">ChannelServicePortType</parameter>
+      <association destinationPath="/repository/transports/https/listener"
+                   type="exposedTransports"/>
+      <association destinationPath="/repository/transports/http/listener"
+                   type="exposedTransports"/>
+   </service>
+</serviceGroup>

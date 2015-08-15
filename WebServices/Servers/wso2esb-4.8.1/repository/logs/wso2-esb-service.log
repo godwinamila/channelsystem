@@ -1,0 +1,9 @@
+2015-08-13 14:59:32,939 [-] [http-nio-9443-exec-29]  INFO ChannelServiceProxy Building Axis service for Proxy service : ChannelServiceProxy
+2015-08-13 14:59:32,996 [-] [http-nio-9443-exec-29]  INFO ChannelServiceProxy Adding service ChannelServiceProxy to the Axis2 configuration
+2015-08-13 14:59:33,076 [-] [http-nio-9443-exec-29]  INFO ChannelServiceProxy Successfully created the Axis2 service for Proxy service : ChannelServiceProxy
+2015-08-13 15:33:00,593 [-] [localhost-startStop-1]  INFO ChannelServiceProxy Building Axis service for Proxy service : ChannelServiceProxy
+2015-08-13 15:33:00,797 [-] [localhost-startStop-1]  INFO ChannelServiceProxy Adding service ChannelServiceProxy to the Axis2 configuration
+2015-08-13 15:33:00,933 [-] [localhost-startStop-1]  INFO ChannelServiceProxy Successfully created the Axis2 service for Proxy service : ChannelServiceProxy
+2015-08-13 15:33:43,697 [-] [http-nio-9443-exec-33]  INFO ChannelServiceProxy Building Axis service for Proxy service : ChannelServiceProxy
+2015-08-13 15:33:43,773 [-] [http-nio-9443-exec-33]  INFO ChannelServiceProxy Adding service ChannelServiceProxy to the Axis2 configuration
+2015-08-13 15:33:43,831 [-] [http-nio-9443-exec-33]  INFO ChannelServiceProxy Successfully created the Axis2 service for Proxy service : ChannelServiceProxy

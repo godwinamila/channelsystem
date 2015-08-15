@@ -4,7 +4,7 @@
                 <h1><a href="#">Sri Medicals</a></h1>
 
                 <div class="account-bar">
-                    <a href="#">Lasantha Samarakoon</a> | <a href="#">Logout</a>
+                    <a href="/adminLogin">Admin Login</a> | <a href="#">Lasantha Samarakoon</a> | <a href="#">Logout</a>
                 </div>
             </div>
             <nav>

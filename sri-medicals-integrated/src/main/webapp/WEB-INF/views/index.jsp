@@ -18,7 +18,8 @@
 <body>
 
 <%@ include file="header.jsp" %>
-
+    <div class="main-content">
+        <div class="wrapper">
 <!-- Login box -->
             <section class="login-box content-box">
 
@@ -65,7 +66,7 @@
                         </td>
                         <td>
                             <a href="#">
-                                <img src="images/register_now.png" />
+                                <img src="<c:url value="/static/resources/images/register_now.png"/>" />
                             </a>
                         </td>
                     </tr>
@@ -73,7 +74,10 @@
 
             </section>
 
-
+  </div>
+        <!-- end of wrapper -->
+    </div>
+    <!-- end of main content -->
 
 
 <%@ include file="footer.jsp" %>
