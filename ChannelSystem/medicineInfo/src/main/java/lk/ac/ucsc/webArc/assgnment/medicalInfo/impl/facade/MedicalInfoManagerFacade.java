@@ -2,13 +2,10 @@ package lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.facade;
 
 
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoManager;
-
-
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.beans.MedicalInfo;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.exceptions.MedicalInfoException;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.persistantImpl.MedicalInfoPersister;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -128,4 +125,16 @@ public class MedicalInfoManagerFacade implements MedicalInfoManager {
     public List<MedicalInfo> getMedicineInfoForDoctor(String doctorNumber) throws MedicalInfoException {
         return medicalInfoPersister.getMedicineInfoForDoctor(doctorNumber);
     }
+
+	@Override
+	public List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber,
+			String from, String to) throws MedicalInfoException {
+		if (customerNumber == null || customerNumber.isEmpty()) {
+            throw new MedicalInfoException("Customer Number Can't be Null or Empty");
+        }
+		if (from == null || to == null) {
+            throw new MedicalInfoException("From or To Date Can't be Empty");
+        }
+		return medicalInfoPersister.getMedicineInfoForCustomer(customerNumber,from,to);
+	}
 }

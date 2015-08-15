@@ -245,4 +245,33 @@ public class MedicalInfoPersisterHibernate implements MedicalInfoPersister {
         }
         return cashObjectLst;
     }
+
+
+
+	@Override
+	public List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber,
+			String from, String to) {
+		List<MedicalInfo> cashObjectLst = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        try {
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.patientNumber=:cusNum and C.createDate BETWEEN :fromDate AND :toDate ";
+            Query query = session.createQuery(hql);
+            query.setParameter("cusNum",customerNumber);
+            query.setParameter("fromDate",from);
+            query.setParameter("toDate",to);
+            List results = query.list();
+
+            for (Object cgb : results) {
+                MedicalInfoBean medicalInfoBean = (MedicalInfoBean) cgb;
+                cashObjectLst.add(medicalInfoBean);
+            }
+            logger.debug("Loaded channnelInfo list of size:{} and list:{}", cashObjectLst.size(), cashObjectLst);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            session.close();
+        }
+        return cashObjectLst;
+
+	}
 }
