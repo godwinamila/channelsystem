@@ -7,6 +7,7 @@ import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.beans.MedicalInfo;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.exceptions.MedicalInfoException;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,8 @@ public interface MedicalInfoPersister  {
 
 
     List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber);
+    
+    List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber, String from, String to);
 
     MedicalInfo getMedicalInfoForAppointment(String channelId);
 

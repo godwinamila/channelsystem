@@ -25,48 +25,33 @@
 
 			<!-- doctor search -->
 			<section class="search-doc-box content-box">
-				<h3>Patient Medical Records</h3>
+				<h3>Patient Medical Record Details</h3>
 				<table class="tab-alt">
 					<tr>
 						<td>Patient ID:</td>
-						<td>${patientId}</td>
+						<td>${medicalRecord.patientNumber}</td>
 					</tr>
 					<tr>
 						<td>Patient Name:</td>
-						<td>${patientName}</td>
+						<td>Name Here</td>
+					</tr>
+					<tr>
+						<td>Channel Date:</td>
+						<td>${medicalRecord.createDate}</td>
+					</tr>
+					<tr>
+						<td>Doctor Name:</td>
+						<td>${medicalRecord.doctorNumber}</td>
+					</tr>
+					<tr>
+						<td>Diagnosis:</td>
+						<td>${medicalRecord.diagonasisInfo}</td>
+					</tr>
+					<tr>
+						<td>Prescription:</td>
+						<td>${medicalRecord.prescriptionInfo}</td>
 					</tr>
 				</table>
-				<table class="tab-doc-search-res tab-alt">
-					<thead>
-						<tr>
-							<th>Channel ID</th>
-							<th>Channel Date</th>
-							<th>Doctor Name</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:if test="${not empty medicalRecordslist}">
-							<tr>
-								<c:forEach var="listValue" items="${medicalRecordslist}">
-									<td>${listValue.channelId}</td>
-									<td>${listValue.createDate}</td>
-									<td>${listValue.doctorNumber}</td>
-									<td><a href="viewMedicalRecord?id=${listValue.medicalInfoId}">View Details</a></td>
-								</c:forEach>
-							</tr>
-
-						</c:if>
-						<c:if test="${empty medicalRecordslist}">
-							<tr>
-								<td>No records found</td>
-						
-							</tr>
-
-						</c:if>
-					</tbody>
-				</table>
-
 			</section>
 
 

@@ -3,7 +3,6 @@ package lk.ac.ucsc.webArc.assgnment.medicalInfo.api;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.beans.MedicalInfo;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.exceptions.MedicalInfoException;
 
-
 import java.util.List;
 
 /**
@@ -29,6 +28,8 @@ import java.util.List;
     MedicalInfo getEmptyMedicalInfo();
 
     List<MedicalInfo> getMedicineInfoForCustomer(String customerNumer) throws MedicalInfoException;
+    
+    List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber, String from, String to) throws MedicalInfoException;
 
     MedicalInfo getMedicalInfoForAppointment(String channelId) throws MedicalInfoException;
 
