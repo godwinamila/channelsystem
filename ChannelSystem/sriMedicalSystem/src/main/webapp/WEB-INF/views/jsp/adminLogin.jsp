@@ -23,21 +23,16 @@
                 <table style="width: 100%;">
                     <tr>
                         <td>
-                            <form:form method="post" modelAttribute="loginForm" action="adminLogin">
-                                <h3>Administrator Sign In</h3>
+                            <form:form method="post" modelAttribute="userTypeForm" action="selectUser">
+                                <h3>Doctor/Staff Sign In</h3>
 
+                                <br>Please select the user type <br>
                                 <table class="form-table">
-                                    <tr> <td class="has-error">${error}<c:out value="${error}"/></td></tr>
-                                    <tr>
-                                        <td><form:label path="userName">User Name:</form:label></td>
-                                        <td><form:input path="userName"/></td>
-                                        <td><form:errors class="invalid" path="userName"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><form:label path="password">Password:</form:label></td>
-                                        <td><form:input path="password"/></td>
-                                        <td><form:errors class="invalid" path="password"/></td>
-                                    </tr>
+                                    <td><form:label path="userType">User Type</form:label></td>
+                                    <td><form:select path="userType">
+                                            <form:option value="Doctor"></form:option>
+                                            <form:option value="Staff"></form:option>
+                                        </form:select>
                                     <tr>
                                         <td></td>
                                         <td>

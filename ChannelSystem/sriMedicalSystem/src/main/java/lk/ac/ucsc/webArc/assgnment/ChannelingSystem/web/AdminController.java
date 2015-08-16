@@ -4,12 +4,21 @@ import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.service.CommonServices;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.LoginForm;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.RegisterForm;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.SearchDocForm;
+import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.UserTypeForm;
 import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerFactory;
 import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerLoginManager;
 import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerManager;
 import lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer.Customer;
 import lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer.LoginProfile;
 
+import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorLoginManager;
+import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorManager;
+import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.Doctor;
+import lk.ac.ucsc.webArc.assgnment.user.api.UserFactory;
+import lk.ac.ucsc.webArc.assgnment.user.api.UserLoginManager;
+import lk.ac.ucsc.webArc.assgnment.user.api.UserManager;
+import lk.ac.ucsc.webArc.assgnment.user.api.beans.User;
+import lk.ac.ucsc.webArc.assgnment.user.api.beans.UserLoginProfile;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,11 +45,11 @@ public class AdminController {
 
 	private final Logger logger = LoggerFactory
 			.getLogger(AdminController.class);
-	private CustomerFactory customerFactory;
+	private UserFactory userFactory;
 
 	private AdminController() {
 		try {
-			customerFactory = CustomerFactory.getInstance();
+			userFactory = UserFactory.getInstance();
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
@@ -50,27 +59,52 @@ public class AdminController {
 	public String index(Model model) {
 
 		logger.debug("adminLogin() is executed!");
-		LoginForm loginForm =new LoginForm();
-		model.addAttribute("loginForm", loginForm);
-		
+		UserTypeForm userTypeForm =new UserTypeForm();
+		model.addAttribute("userTypeForm", userTypeForm);
 		return "adminLogin";
 	}
 
-	@RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
-	public String adminLoginPost(@Valid @ModelAttribute("loginForm") LoginForm loginForm,
-			HttpServletRequest reg, BindingResult result, Model model) {
-		
+	@RequestMapping(value = "/selectUser", method = RequestMethod.POST)
+	public String selectUser(@Valid @ModelAttribute("userTypeForm") UserTypeForm userTypeForm, HttpServletRequest reg,
+						BindingResult result, Model model) {
+		logger.debug("adminLogin() is executed!");
 		//call legacy authentication service
 		//here we mock the service request and hard code the staff and doctor login process
 		//if userename = staff
-		if(loginForm.getUserName().equals("staff")){
-			return "staff_home";
+		LoginForm loginForm =new LoginForm();
+		model.addAttribute("loginForm",loginForm);
+		if(userTypeForm.getUserType().equals("Staff")){
+			return "staffLogin";
 		}
 		//if username = doctor
-		if(loginForm.getUserName().equals("doctor")){
-			return "doctor_home";
+		if(userTypeForm.getUserType().equals("Doctor")){
+			return "doctorLogin";
 		}
 	
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/staffLogin", method = RequestMethod.POST)
+	public String staffLogin(@Valid @ModelAttribute("loginForm") LoginForm loginForm, HttpServletRequest reg,
+						BindingResult result, Model model) {
+		try {
+			UserLoginManager loginManager = userFactory.getUserLoginManager();
+			UserManager userManager =userFactory.getUserManager();
+			String loginResult = loginManager.loginUser(loginForm.getUserName(), loginForm.getPassword());
+			if (loginResult.equalsIgnoreCase("SUCCESS")) {
+				SearchDocForm searchDocForm =new SearchDocForm();
+				model.addAttribute("searchDocForm",searchDocForm);
+				reg.getSession().setAttribute("isAuthenticated","true");
+				User user=userManager.getUserByLoginNameOrAlias(loginForm.getUserName());
+				reg.getSession().setAttribute("customerNumber",user.getUserNumber());
+				reg.getSession().setAttribute("userType", "staff");
+				reg.getSession().setAttribute("name",user.getFirstName() +" "+ user.getLastName());
+				return "doctor_home";
+			}
+			model.addAttribute("error", loginResult);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
 		return "redirect:/";
 	}
 }

@@ -10,6 +10,8 @@ public class LoginForm {
     @NotEmpty(message = "password cannot be empty")
     private String password;
 
+    private String userType;
+
     public String getUserName() {
         return userName;
     }
@@ -26,5 +28,11 @@ public class LoginForm {
         this.password = password;
     }
 
+    public String getUserType() {
+        return userType;
+    }
 
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 }
