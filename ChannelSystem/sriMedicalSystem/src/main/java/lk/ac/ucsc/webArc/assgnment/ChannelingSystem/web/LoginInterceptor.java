@@ -18,12 +18,11 @@ public class LoginInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object handler) throws Exception {
         try {
             String uri = request.getRequestURI();
-            if (!uri.endsWith("/register")&& !uri.endsWith("/ChannelSystem/")&& !uri.endsWith("/login") && !uri.endsWith("/logout") && !uri.contains("/resources/") && !uri.endsWith("/invalidSession")) {
+            if (!uri.endsWith("/staffLogin")&&!uri.endsWith("/doctorLogin")&&!uri.endsWith("/selectUser")&&!uri.endsWith("/adminLogin")&& !uri.endsWith("/register")&& !uri.endsWith("/ChannelSystem/")&& !uri.endsWith("/login") && !uri.endsWith("/logout") && !uri.contains("/resources/") && !uri.endsWith("/invalidSession")) {
                 if ((request.getSession().getAttribute("isAuthenticated") == null) || ((request.getSession().getAttribute("isAuthenticated") != null) && (!"true".equals(request.getSession().getAttribute("isAuthenticated"))))) {
                     response.sendRedirect("/ChannelSystem");
                     return false;
                 }
-
             }
 
         } catch (Exception e) {

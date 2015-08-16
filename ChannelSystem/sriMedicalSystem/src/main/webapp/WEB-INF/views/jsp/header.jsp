@@ -4,7 +4,7 @@
                 <h1><a href="#">Sri Medicals</a></h1>
 
                 <div class="account-bar">
-                     <a href="/adminLogin">Admin Login</a> <a href="#">${sessionScope.name}</a> | <a href="/ChannelSystem/logout">Logout</a>
+                     <a href="/ChannelSystem/adminLogin">Admin Login</a><a href="#">${sessionScope.name}</a> | <a href="/ChannelSystem/logout">Logout</a>
                 </div>
             </div>
             <nav>
