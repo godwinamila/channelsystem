@@ -254,11 +254,31 @@ public class MedicalInfoPersisterHibernate implements MedicalInfoPersister {
 		List<MedicalInfo> cashObjectLst = new ArrayList<>();
         Session session = sessionFactory.openSession();
         try {
-            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.patientNumber=:cusNum and C.createDate BETWEEN :fromDate AND :toDate ";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C ";
+            if(customerNumber!=null && !customerNumber.equalsIgnoreCase("") || from!=null && !from.equalsIgnoreCase("")||
+                    to!=null && !to.equalsIgnoreCase("")){
+                hql = hql+" where ";
+                boolean andNeed=false;
+                if(customerNumber!=null && !customerNumber.equalsIgnoreCase("")){
+                    hql = hql+" C.patientNumber=:cusNum ";
+                    andNeed =true;
+                }
+                if(from!=null && !from.equalsIgnoreCase("") && to!=null && !to.equalsIgnoreCase("")){
+                    if(andNeed){
+                        hql = hql+" and C.createDate BETWEEN :fromDate AND :toDate  ";
+                    }else{
+                        hql = hql+" C.createDate BETWEEN :fromDate AND :toDate  ";
+                    }
+                }
+            }
             Query query = session.createQuery(hql);
-            query.setParameter("cusNum",customerNumber);
-            query.setParameter("fromDate",from);
-            query.setParameter("toDate",to);
+            if(customerNumber!=null && !customerNumber.equalsIgnoreCase("")) {
+                query.setParameter("cusNum", customerNumber);
+            }
+            if(from!=null && !from.equalsIgnoreCase("") && to!=null && !to.equalsIgnoreCase("")) {
+                query.setParameter("fromDate", from);
+                query.setParameter("toDate", to);
+            }
             List results = query.list();
 
             for (Object cgb : results) {

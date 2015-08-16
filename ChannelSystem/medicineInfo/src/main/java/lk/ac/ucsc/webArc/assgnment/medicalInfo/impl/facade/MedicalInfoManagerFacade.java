@@ -129,12 +129,12 @@ public class MedicalInfoManagerFacade implements MedicalInfoManager {
 	@Override
 	public List<MedicalInfo> getMedicineInfoForCustomer(String customerNumber,
 			String from, String to) throws MedicalInfoException {
-		if (customerNumber == null || customerNumber.isEmpty()) {
-            throw new MedicalInfoException("Customer Number Can't be Null or Empty");
-        }
-		if (from == null || to == null) {
-            throw new MedicalInfoException("From or To Date Can't be Empty");
-        }
+//		if (customerNumber == null || customerNumber.isEmpty()) {
+//            throw new MedicalInfoException("Customer Number Can't be Null or Empty");
+//        }
+//		if (from == null || to == null) {
+//            throw new MedicalInfoException("From or To Date Can't be Empty");
+//        }
 		return medicalInfoPersister.getMedicineInfoForCustomer(customerNumber,from,to);
 	}
 }

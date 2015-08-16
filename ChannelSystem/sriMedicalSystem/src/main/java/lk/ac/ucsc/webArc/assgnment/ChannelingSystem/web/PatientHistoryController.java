@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.PatientHistoryForm;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoFactory;
 import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerFactory;
 import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerManager;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoFactory;
@@ -35,12 +36,14 @@ public class PatientHistoryController {
     private MedicalInfoFactory medInfoFactory;
     private CustomerFactory customerFactory;
     private DoctorFactory doctorFactory;
+    private ChannelInfoFactory channelInfoFactory;
 
     private PatientHistoryController() {
         try {
         	medInfoFactory = MedicalInfoFactory.getInstance();
         	customerFactory = CustomerFactory.getInstance();
         	doctorFactory = DoctorFactory.getInstance();
+            channelInfoFactory =ChannelInfoFactory.getInstance();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
@@ -64,13 +67,13 @@ public class PatientHistoryController {
 	        MedicalInfoManager medInfoManager = medInfoFactory.getMedicalInfoManager();
 	        CustomerManager custManager = customerFactory.getCustomerManager();
 	        String custNo =patientHistoryForm.getCustomerNumber();
-	        Customer cust = custManager.getCustomerByCustomerNumber(custNo);
+	       // Customer cust = custManager.getCustomerByCustomerNumber(custNo);
 	        String fromDate = patientHistoryForm.getFromDate();
 	        String toDate = patientHistoryForm.getToDate();
 	        List<MedicalInfo> medicalRecordslist = medInfoManager.getMedicineInfoForCustomer(custNo, fromDate, toDate);
 	        model.addAttribute("medicalRecordslist", medicalRecordslist);
 	        model.addAttribute("patientId", custNo);
-	        model.addAttribute("patientName", cust.getFirstName() + " "+cust.getLastName());
+	        //model.addAttribute("patientName", cust.getFirstName() + " "+cust.getLastName());
 	        return "patientHistoryResult";
     	}catch (Exception e){
             logger.error(e.getMessage(),e);
