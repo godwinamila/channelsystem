@@ -41,7 +41,7 @@
 						<tr>
 							<th>Channel ID</th>
 							<th>Channel Date</th>
-							<th>Doctor Name</th>
+							<th>Doctor ID</th>
 							<th></th>
 						</tr>
 					</thead>

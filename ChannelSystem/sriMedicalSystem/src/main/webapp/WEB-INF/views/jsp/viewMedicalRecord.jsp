@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>Patient Name:</td>
-						<td>Name Here</td>
+						<td>{patientName}</td>
 					</tr>
 					<tr>
 						<td>Channel Date:</td>
@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>Doctor Name:</td>
-						<td>${medicalRecord.doctorNumber}</td>
+						<td>${docName}</td>
 					</tr>
 					<tr>
 						<td>Diagnosis:</td>

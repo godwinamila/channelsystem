@@ -64,7 +64,7 @@ public class AdminController {
 		//here we mock the service request and hard code the staff and doctor login process
 		//if userename = staff
 		if(loginForm.getUserName().equals("staff")){
-			return "staff_home";
+			return "patientHistory";
 		}
 		//if username = doctor
 		if(loginForm.getUserName().equals("doctor")){
