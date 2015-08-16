@@ -1,15 +1,26 @@
 package lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.LoginForm;
-import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.RegisterForm;
 import lk.ac.ucsc.webArc.assgnment.ChannelingSystem.web.forms.SearchDocForm;
-import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerLoginManager;
-import lk.ac.ucsc.webArc.assgnment.customer.api.CustomerManager;
-import lk.ac.ucsc.webArc.assgnment.customer.api.beans.customer.Customer;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoFactory;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoManager;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelScheduleManager;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.beans.ChannelInfo;
+import lk.ac.ucsc.webArc.assgnment.channelInfo.api.beans.ChannelSchedule;
 import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorFactory;
 import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorLoginManager;
 import lk.ac.ucsc.webArc.assgnment.doctor.api.DoctorManager;
 import lk.ac.ucsc.webArc.assgnment.doctor.api.beans.Doctor;
+import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoFactory;
+import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoManager;
+import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.beans.MedicalInfo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,11 +30,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by chamindah on 8/5/2015.
  */
@@ -31,10 +37,15 @@ import java.util.Map;
 public class DoctorController {
     private final Logger logger = LoggerFactory.getLogger(DoctorController.class);
     private DoctorFactory doctorFactory;
+    private ChannelInfoFactory channelInfoFactory;
+    private MedicalInfoFactory medInfoFactory;
 
     private DoctorController() {
         try {
             doctorFactory = DoctorFactory.getInstance();
+            channelInfoFactory = ChannelInfoFactory.getInstance();
+            medInfoFactory = MedicalInfoFactory.getInstance();
+            
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
@@ -52,7 +63,7 @@ public class DoctorController {
                 model.addAttribute("searchDocForm",searchDocForm);
                 reg.getSession().setAttribute("isAuthenticated","true");
                 Doctor doctor=doctorManager.getDoctorByLoginNameOrAlias(loginForm.getUserName());
-                reg.getSession().setAttribute("customerNumber",doctor.getDoctorNumber());
+                reg.getSession().setAttribute("docNumber",doctor.getDoctorNumber());
                 reg.getSession().setAttribute("userType", "doctor");
                 reg.getSession().setAttribute("name",doctor.getFirstName() +" "+ doctor.getLastName());
                 return "doctor_home";
@@ -98,4 +109,82 @@ public class DoctorController {
         model.addAttribute("lists", doctorList);
         return "doctorSearchResult";
     }
+    
+    @RequestMapping(value = "/doctor_home", method = RequestMethod.GET)
+    String channelDoctorPage(Model model, HttpServletRequest reg) {
+        try {
+            String doctorNum = (String) reg.getSession().getAttribute("docNumber");
+            ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
+            List<ChannelSchedule> channelScheduleList= channelScheduleManager.getChannelScheduleForDoctor(doctorNum);
+            model.addAttribute("lists", channelScheduleList);
+            logger.debug("channelDoctorPage() is executed!");
+        }catch (Exception e){
+        	e.printStackTrace();
+        }
+        return "doctor_home";
+    }
+    
+    
+    @RequestMapping(value = "/viewAppointments", method = RequestMethod.GET)
+    String viewDoctorAppointments(Model model, HttpServletRequest reg) {
+        try {
+            String channelId = reg.getParameter("channelId");
+            ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
+            ChannelInfoManager channelInfoManager = channelInfoFactory.getChannelInfoManager();
+            List<ChannelInfo> channelInfoList= channelInfoManager.getChannelInfoByScheduleId(channelId);
+            model.addAttribute("lists", channelInfoList);
+            ChannelSchedule schedule = channelScheduleManager.getChannelSchedule(channelId);
+            model.addAttribute("schedule", schedule);
+            logger.debug("channelDoctorPage() is executed!");
+        }catch (Exception e){
+        	e.printStackTrace();
+        }
+        return "viewAppointments";
+    }
+    
+    @RequestMapping(value = "/newTreatment", method = RequestMethod.GET)
+    String getNewTreatment(Model model, HttpServletRequest req) {
+        try {
+            String channelId = req.getParameter("channelId");
+            String docId = req.getParameter("docId");
+            String custId = req.getParameter("custId");
+            MedicalInfoManager medInfoManager = medInfoFactory.getMedicalInfoManager();
+            MedicalInfo treatment = medInfoManager.getMedicalInfoForAppointment(channelId);
+            if(treatment == null){
+            	treatment = medInfoManager.getEmptyMedicalInfo();
+            	treatment.setChannelId(channelId);
+            	treatment.setDoctorNumber(docId);
+            	treatment.setPatientNumber(custId);
+            }
+            model.addAttribute("treatment", treatment);
+            logger.debug("channelDoctorPage() is executed!");
+        }catch (Exception e){
+        	e.printStackTrace();
+        }
+        return "newTreatment";
+    }
+    
+    @RequestMapping(value = "/newTreatment", method = RequestMethod.POST)
+    public String postNewTreatment(@Valid @ModelAttribute("treatment") MedicalInfo treatment,
+                               BindingResult result, Model model) {
+
+        logger.debug("register() is executed!");
+        try{
+        	MedicalInfoManager medInfoManager = medInfoFactory.getMedicalInfoManager();
+        	treatment.setCreateDate(new Date());
+        	if(treatment.getMedicalInfoId() == 0){
+        		medInfoManager.addMedicalInfo(treatment);
+        	}else{
+        		medInfoManager.updateMedicalInfo(treatment);
+        	}
+
+            return "treatmentSuccess";
+        	
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+        }
+        return "redirect:/";
+
+    }
+
 }

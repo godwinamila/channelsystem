@@ -31,6 +31,9 @@ import java.util.List;
     List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber) throws ChannelInfoException;
 
     ChannelInfo getEmptyChannelInfo();
+    
+    List<ChannelInfo> getChannelInfoByScheduleId(String scheduleId) throws ChannelInfoException;
+
 
 
 }

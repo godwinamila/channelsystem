@@ -114,6 +114,7 @@ public class ChannelController {
             channelInfo.setChannelStatus(1);
             channelInfo.setCreateDate(new Date());
             channelInfo.setChannelDate(channelForm.getChannelDate());
+            channelInfo.setChanScheId(Integer.parseInt(channelForm.getChannelSheId()));
             channelInfoManager.addChannelInfo(channelInfo);
             ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
             ChannelSchedule channelSchedule =channelScheduleManager.getChannelSchedule(channelForm.getChannelSheId());

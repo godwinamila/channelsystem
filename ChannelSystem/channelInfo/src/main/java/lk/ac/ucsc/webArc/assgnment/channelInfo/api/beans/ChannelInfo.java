@@ -42,4 +42,8 @@ public interface ChannelInfo {
     String getChannelDate();
 
     void setChannelDate(String channelDate);
+    
+    int getChanScheId();
+    
+    void setChanScheId(int chanScheId);
 }
