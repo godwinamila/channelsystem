@@ -19,6 +19,7 @@ public class ChannelInfoBean implements ChannelInfo {
     private String timeSlot;
     private int channelStatus;
     private String location;
+    private int chanScheId;
 
     @Override
     public int getChannelInfoId() {
@@ -99,4 +100,16 @@ public class ChannelInfoBean implements ChannelInfo {
     public void setChannelDate(String channelDate) {
         this.channelDate = channelDate;
     }
+
+    @Override
+	public int getChanScheId() {
+		return chanScheId;
+	}
+
+    @Override
+	public void setChanScheId(int chanScheId) {
+		this.chanScheId = chanScheId;
+	}
+    
+    
 }

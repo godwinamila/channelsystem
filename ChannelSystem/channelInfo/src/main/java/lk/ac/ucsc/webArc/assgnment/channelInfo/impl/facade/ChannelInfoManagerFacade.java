@@ -2,13 +2,10 @@ package lk.ac.ucsc.webArc.assgnment.channelInfo.impl.facade;
 
 
 import lk.ac.ucsc.webArc.assgnment.channelInfo.api.ChannelInfoManager;
-
-
 import lk.ac.ucsc.webArc.assgnment.channelInfo.api.beans.ChannelInfo;
 import lk.ac.ucsc.webArc.assgnment.channelInfo.api.exceptions.ChannelInfoException;
 import lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean;
 import lk.ac.ucsc.webArc.assgnment.channelInfo.impl.persistantImpl.ChannelInfoPersister;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -123,4 +120,10 @@ public class ChannelInfoManagerFacade implements ChannelInfoManager {
     public List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber) throws ChannelInfoException {
         return channelInfoPersister.getChannelInfoForDoctor(doctorNumber);
     }
+
+	@Override
+	public List<ChannelInfo> getChannelInfoByScheduleId(String scheduleId)
+			throws ChannelInfoException {
+		return channelInfoPersister.getChannelInfoByScheduleId(scheduleId);
+	}
 }

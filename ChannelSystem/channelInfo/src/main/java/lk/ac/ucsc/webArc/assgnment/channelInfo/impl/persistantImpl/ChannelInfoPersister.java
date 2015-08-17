@@ -30,8 +30,9 @@ public interface ChannelInfoPersister  {
 
     void deleteFromDB(ChannelInfoBean channelInfo) throws ChannelInfoException;
 
-
     List<ChannelInfo> getChannelInfoForCustomer(String customerNumber);
 
     List<ChannelInfo> getChannelInfoForDoctor(String doctorNumber);
+    
+    List<ChannelInfo> getChannelInfoByScheduleId(String scheduleId);
 }
