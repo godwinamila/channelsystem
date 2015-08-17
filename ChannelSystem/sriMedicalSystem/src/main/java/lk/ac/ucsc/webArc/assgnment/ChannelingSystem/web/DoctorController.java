@@ -21,6 +21,7 @@ import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoFactory;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.MedicalInfoManager;
 import lk.ac.ucsc.webArc.assgnment.medicalInfo.api.beans.MedicalInfo;
 
+import lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -66,6 +67,9 @@ public class DoctorController {
                 reg.getSession().setAttribute("docNumber",doctor.getDoctorNumber());
                 reg.getSession().setAttribute("userType", "doctor");
                 reg.getSession().setAttribute("name",doctor.getFirstName() +" "+ doctor.getLastName());
+                ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
+                List<ChannelSchedule> channelScheduleList =channelScheduleManager.getChannelScheduleForDoctor(doctor.getDoctorNumber());
+                model.addAttribute("lists",channelScheduleList);
                 return "doctor_home";
             }
             model.addAttribute("error", loginResult);
@@ -114,6 +118,10 @@ public class DoctorController {
     String channelDoctorPage(Model model, HttpServletRequest reg) {
         try {
             String doctorNum = (String) reg.getSession().getAttribute("docNumber");
+            String message =(String)reg.getAttribute("message");
+            if(message!=null && !message.isEmpty()){
+                model.addAttribute("message", message);
+            }
             ChannelScheduleManager channelScheduleManager = channelInfoFactory.getChannelScheduleManager();
             List<ChannelSchedule> channelScheduleList= channelScheduleManager.getChannelScheduleForDoctor(doctorNum);
             model.addAttribute("lists", channelScheduleList);
@@ -165,25 +173,30 @@ public class DoctorController {
     }
     
     @RequestMapping(value = "/newTreatment", method = RequestMethod.POST)
-    public String postNewTreatment(@Valid @ModelAttribute("treatment") MedicalInfo treatment,
-                               BindingResult result, Model model) {
+    public String postNewTreatment(@Valid @ModelAttribute("treatment") MedicalInfoBean treatment,
+                               BindingResult result, Model model, HttpServletRequest req ) {
 
         logger.debug("register() is executed!");
         try{
         	MedicalInfoManager medInfoManager = medInfoFactory.getMedicalInfoManager();
         	treatment.setCreateDate(new Date());
+            ChannelInfoManager channelInfoManager =channelInfoFactory.getChannelInfoManager();
+            ChannelInfo channelInfo =channelInfoManager.getChannelInfo(treatment.getChannelId());
+            channelInfo.setChannelStatus(2);
+            channelInfoManager.updateChannelInfo(channelInfo);
         	if(treatment.getMedicalInfoId() == 0){
         		medInfoManager.addMedicalInfo(treatment);
         	}else{
         		medInfoManager.updateMedicalInfo(treatment);
         	}
-
-            return "treatmentSuccess";
+            req.setAttribute("message", "Treatment Add successfully");
+            return "redirect:/doctor_home?message=Treatment Add successfully";
         	
         }catch (Exception e){
             logger.error(e.getMessage(),e);
+            return "redirect:/doctor_home?message=Treatment Add Fail";
         }
-        return "redirect:/";
+
 
     }
 

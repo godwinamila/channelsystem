@@ -210,7 +210,7 @@ public class MedicalInfoPersisterHibernate implements MedicalInfoPersister {
         MedicalInfo medicalInfo=null;
         Session session = sessionFactory.openSession();
         try {
-            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.channelId =: chanId";
+            String hql = "FROM lk.ac.ucsc.webArc.assgnment.medicalInfo.impl.beans.MedicalInfoBean C where C.channelId =:chanId";
             Query query = session.createQuery(hql);
             query.setParameter("chanId",channelId);
             medicalInfo = (MedicalInfoBean)query.uniqueResult();

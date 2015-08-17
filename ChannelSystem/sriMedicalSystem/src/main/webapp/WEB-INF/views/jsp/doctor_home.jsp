@@ -22,7 +22,9 @@
 
 <div class="main-content">
     <div class="wrapper">
-
+        <section class="success-msg">
+            <c:out value="${message}"/>
+        </section>
         <!-- doctor search -->
         <section class="search-doc-box content-box">
             <h3>Channel Schedule</h3>

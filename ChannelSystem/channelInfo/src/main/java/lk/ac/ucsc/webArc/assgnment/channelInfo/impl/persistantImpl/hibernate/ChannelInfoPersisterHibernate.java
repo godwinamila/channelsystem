@@ -114,7 +114,7 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
             }
             String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean C WHERE C.channelInfoId = :chanInId";
             Query query = session.createQuery(hql);
-            query.setParameter("chanInId", channelInfoId);
+            query.setParameter("chanInId",Integer.parseInt(channelInfoId));
             channelInfoBean = (ChannelInfoBean) query.uniqueResult();
 
             logger.info("Loaded ChannelInfo:{}", channelInfoBean);
@@ -238,7 +238,7 @@ public class ChannelInfoPersisterHibernate implements ChannelInfoPersister {
         try {
             String hql = "FROM lk.ac.ucsc.webArc.assgnment.channelInfo.impl.beans.ChannelInfoBean C where C.chanScheId=:chanScheId";
             Query query = session.createQuery(hql);
-            query.setParameter("chanScheId",scheduleId);
+            query.setParameter("chanScheId",Integer.parseInt(scheduleId));
             List results = query.list();
 
             for (Object cgb : results) {

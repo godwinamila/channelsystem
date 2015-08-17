@@ -28,8 +28,14 @@
         
         	<h3>Patient Treatment</h3>
            
-            <form:form method="post" modelAttribute="treatment" action="register">
+            <form:form method="post" modelAttribute="treatment" action="newTreatment">
                 <table class="form-table">
+                    <tr>
+                        <td><form:hidden path="medicalInfoId" /></td>
+                        <td><form:hidden path="patientNumber"/></td>
+                        <td><form:hidden path="doctorNumber"/></td>
+                        <td><form:hidden path="channelId"/></td>
+                    </tr>
                     <tr>
                         <td><form:label path="diagonasisInfo">Diagnosis:</form:label></td>
                         <td><form:textarea path="diagonasisInfo"/></td>

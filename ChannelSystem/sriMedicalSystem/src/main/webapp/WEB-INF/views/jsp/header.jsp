@@ -4,7 +4,7 @@
                 <h1><a href="#">Sri Medicals</a></h1>
 
                 <div class="account-bar">
-                     <a href="/ChannelSystem/adminLogin">Admin Login</a><a href="#">${sessionScope.name}</a> | <a href="/ChannelSystem/logout">Logout</a>
+                     <a href="#">${sessionScope.name}</a> | <a href="/ChannelSystem/logout">Logout</a>
                 </div>
             </div>
             <nav>
@@ -14,6 +14,7 @@
                     <li><a href="/ChannelSystem/searchDoctor">Search Doctor</a></li>
                     <li><a href="/ChannelSystem/channelInfo">Check Appointments</a></li>
                     <li><a href="#">Contact Us</a></li>
+                    <li><a href="/ChannelSystem/adminLogin">Staff|Doctor</a></li>
                 </ul>
             </nav>
         </div>

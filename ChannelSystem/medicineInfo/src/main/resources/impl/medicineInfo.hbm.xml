@@ -20,10 +20,13 @@
             <column name="CREATE_DATE"/>
         </property>
         <property name="diagonasisInfo" type="java.lang.String">
-            <column name="TIME_SLOT" length="500"/>
+            <column name="DIAGONASIS" length="500"/>
         </property>
         <property name="prescriptionInfo" type="java.lang.String">
-            <column name="LOCATION" length="500"/>
+            <column name="PRESCRIPTION" length="500"/>
+        </property>
+        <property name="channelId" type="java.lang.String">
+            <column name="CHANNEL_ID" length="20"/>
         </property>
     </class>
 </hibernate-mapping>

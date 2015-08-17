@@ -55,12 +55,12 @@
 						<c:if test="${not empty lists}">
 							<c:forEach var="listValue" items="${lists}">
 								<tr>
-									<td>${listValue.patientId}</td>
+									<td>${listValue.patientNumber}</td>
 									<td>${listValue.channelStatus}</td>
 									<td>${listValue.timeSlot}</td>
 									
 									<td><a
-										href="newTreatment?channelId=${listValue.chanScheId}&docId=${listValue.doctorNumber}&custId=${listValue.patientId}">Treatment</a>
+										href="newTreatment?channelId=${listValue.chanScheId}&docId=${listValue.doctorNumber}&custId=${listValue.patientNumber}">Treatment</a>
 									</td>
 								</tr>
 							</c:forEach>

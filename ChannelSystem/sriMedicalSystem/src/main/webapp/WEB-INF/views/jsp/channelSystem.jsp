@@ -35,7 +35,7 @@
                                     </tr>
                                     <tr>
                                         <td><form:label path="password">Password:</form:label></td>
-                                        <td><form:input path="password"/></td>
+                                        <td><form:password path="password"/></td>
                                         <td><form:errors class="invalid" path="password"/></td>
                                     </tr>
                                     <tr>
